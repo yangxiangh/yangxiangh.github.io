@@ -37,12 +37,22 @@
   </entry>
   
   <entry>
-    <title>DOM是事件流</title>
+    <title>DOM事件流</title>
     <link href="http://example.com/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/"/>
     <id>http://example.com/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/</id>
     <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
+    <updated>2021-02-01T10:50:50.825Z</updated>
     
+    <content type="html"><![CDATA[<p>1.什么事件流</p><blockquote><p>js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。</p></blockquote><p>2.事件冒泡</p><p>3.事件捕获</p><p>4.事件流</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;1.什么事件流&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。&lt;/p&gt;
+&lt;/blockquote</summary>
+      
     
     
     
@@ -80,17 +90,27 @@
   </entry>
   
   <entry>
-    <title>JSPON的实现原理</title>
+    <title>记录一个使用JSOP解决跨域坑</title>
     <link href="http://example.com/2021/02/01/JSONP/"/>
     <id>http://example.com/2021/02/01/JSONP/</id>
     <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
+    <updated>2021-02-01T10:40:24.367Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>问题背景(angular项目)</li></ul><p>项目使用nginx配置代理，线上调用腾讯地图WebService API时产生跨域问题。服务端不能解跨域这种跨域问题，只能由前端去探索。例如：关键词输入提示接口(<a href="https://apis.map.qq.com/ws/place/v1/suggestion?keyword=%E6%9C%9D%E9%98%B3&amp;region=%E5%8C%97%E4%BA%AC%E5%B8%82&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77)%E3%80%82%E5%85%B6%E5%AE%9E%E5%AE%98%E7%BD%91%E5%B7%B2%E7%BB%8F%E7%BB%99%E5%87%BA%E7%AD%94%E6%A1%88%EF%BC%8C%E5%A6%82%E5%9B%BE">https://apis.map.qq.com/ws/place/v1/suggestion?keyword=朝阳&amp;region=北京市&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77)。其实官网已经给出答案，如图</a></p><img src="/2021/02/01/JSONP/1.png" class><p>①在app.module.ts中，注入JsonpModule模块</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;JsonpModule&#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/http&#x27;</span>;</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">    imports:[</span><br><span class="line">        JsonpModule</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>②在业务组件中使用</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;HttpClient&#125; <span class="keyword">from</span> <span class="string">&quot;@angular/common/http&quot;</span>;</span><br><span class="line"><span class="function"><span class="title">constructor</span>(<span class="params">private http:HttpClient</span>)</span>&#123;&#125;</span><br><span class="line"> <span class="function"><span class="title">suggest</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">     <span class="comment">//注意添加output=jsonp参数</span></span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&#x27;https://apis.map.qq.com/ws/place/v1/suggestion/?region=&amp;&#x27;</span>+<span class="string">&#x27;keyword=&#x27;</span>+<span class="string">&#x27;北京&#x27;</span>+<span class="string">&#x27;&amp;output=jsonp&amp;key=XQEBZ-WWO3U-7AWVZ-4CDZD-KL6R3-W4BEF&#x27;</span>;</span><br><span class="line">    <span class="built_in">this</span>.http.jsonp(url, <span class="string">&#x27;callback&#x27;</span>).subscribe(</span><br><span class="line">      res =&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> data = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(res))<span class="comment">//返回的jsonp数据需要解析才能使用</span></span><br><span class="line">        <span class="built_in">this</span>.listOfOption = data.data;</span><br><span class="line">        <span class="built_in">console</span>.log(data.data);</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br></pre></td></tr></table></figure><ul><li><p>解决完问题，来研究以下JSONP（JSON with Padding）的原理及实现</p><p>参考地址：<a href="https://blog.csdn.net/inite/article/details/80333130">https://blog.csdn.net/inite/article/details/80333130</a> </p><p>1.什么是JSONP</p><p>JSON是一种轻量级的数据传输格式，被广泛应用于当前web应用中。虽然JSONP虽然和JSON只相差一个字母，但是他们完全不是一回事。JSON是一种数据交换格式，而JSONP是一种<em>非官方跨域数据交换协议</em>。就如同，json是用来书写情报和交换的暗号，而jsonp是把用暗号书写的情报传递给自己同志时使用的街头方式。</p><p>2.JSONP的原理</p><p>ajax请求受同源策略的影响，不允许进行跨站请求。而script标签的src属性中的连接却可以访问跨域的js脚本。利用这个特性，服务端不在返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行调用，这样实现了跨域。</p><p>3.JSONP的具体实现</p><p>未完待续…</p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;问题背景(angular项目)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;项目使用nginx配置代理，线上调用腾讯地图WebService API时产生跨域问题。服务端不能解跨域这种跨域问题，只能由前端去探索。例如：关键词输入提示接口(&lt;a href=&quot;https://api</summary>
+      
     
     
     
     
-    
-    <category term="JSONP" scheme="http://example.com/tags/JSONP/"/>
+    <category term="JSONP 腾讯API" scheme="http://example.com/tags/JSONP-%E8%85%BE%E8%AE%AFAPI/"/>
     
   </entry>
   

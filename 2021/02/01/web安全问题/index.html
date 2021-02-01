@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.Web安全分类 XSS（Cross Site Scripting,跨站脚本攻击），CSRF(Cross Site Request Forgery,跨站请求伪造)，点击劫持， URL跳转漏洞，SQL注入， OS命令注入。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-01T05:37:27.000Z">
-<meta property="article:modified_time" content="2021-02-01T07:41:41.246Z">
+<meta property="article:modified_time" content="2021-02-01T09:04:58.007Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="web安全">
 <meta name="twitter:card" content="summary">
@@ -255,9 +255,42 @@
 <p>①SameSite:可以对cookie设置SameSite属性.该属性表示cookie不随着跨站请求发送,可以很大程度减少CSRF,但该属性不是所有浏览器都兼容</p>
 <p>②Referer Check: HTTP Referer时header的一部分,当浏览器向服务器发起请求时,一般会带上referer信息告诉服务器请求是从哪个连接发出.服务器可以通过该信息来防御CSRF.</p>
 <p>③Anti-CSRF-Token:该方案是目前比较完善的解决方案.即发送请求时在http请求中以参数的形式加入一个随机产生的token,并在服务器建立拦截器来验证token.服务器读取浏览器当前域cookie中的这个值,会进行校验该请求中的token中的token是否都存在且相等,才认为时合法请求.</p>
-<p>④验证码:应用程序和用户交互的过程中,特别是账户交易这种核心处理,强制用户输入验证码,才能最终完成请求.</p>
+<p>④验证码:应用程序和用户交互的过程中,特别是账户交易这种核心处理,强制用户输入验证码,才能最终完成请求.   </p>
+<p>4.点击劫持</p>
+<ul>
+<li><p>是什么:点击劫持是一种视觉欺骗的攻击手段.攻击者将需要攻击的网站通过iframe嵌入自己的网页中,并将iframe设置为透明,在页面中透出一个按钮有道用户点击.</p>
+</li>
+<li><p>特点</p>
+<p>隐蔽性高,骗取用户操作</p>
+<p>需要利用iframe或者其他标签的属性  </p>
+</li>
+<li><p>点击劫持的原理</p>
+<p>用户登录A网站后,被攻击者被诱导打开第三方网站,而第三方网站通过iframe引入A网站页面的内容,用户在第三方网站中点击A网站的按钮. </p>
+</li>
+<li><p>*如何防御</p>
+<p>①X-FRAME-OPTIONS:是HTTP响应头 ,在现代浏览器中有较好的支持.该选项有三个值:</p>
+<p>​    deny:页面不允许通过iframe的形式展示</p>
+<p>​    sameorigin:页面可以在相同域名下通过iframe嵌套</p>
+<p>​    allow-from:页面可以在指定来源的iframe中展示</p>
+<p>②js防御</p>
+<p>对于一些比较老旧的浏览器来说,并不支持X-Frame-OPTION选项,那么只能通过JS的方式来防御点击劫持.原理:当通过iframe的方式加载页面时,攻击的网页直接不显示所有内容.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span> <span class="attr">id</span>=<span class="string">&quot;click-jack&quot;</span>&gt;</span></span><br><span class="line">    html &#123;</span><br><span class="line">      display: none !important;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (self == top) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> style = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;click-jack&#x27;</span>)</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.body.removeChild(style)</span></span><br><span class="line"><span class="javascript">    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line">      top.location = self.location</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>5.URL跳转漏洞</p>
+<ul>
+<li><p>是什么:借助未验证的URL跳转,将应用程序引导到不安全的第三方区域,从而导致安全问题.</p>
+</li>
+<li><p>原理:攻击者构造恶意链接(连接需要伪装,尽可能迷惑),发在QQ群或者时浏览量比较多的贴吧/论坛中,安全意识比较低的用户点击后,经过服务器或者浏览器解析后,跳转到恶意网站.</p>
+</li>
+<li><p>如何防御:</p>
+<p>①referer的限制</p>
+<p>②加入有效性验证token  </p>
 </li>
 </ul>
+</li>
+</ul>
+<p> 6.SQL注入</p>
+<p> 7.OS命令注入攻击</p>
 
       
 
@@ -513,7 +546,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JSONP</a>
+                <a href="javascript:void(0)" class="js-tag color2">JSONP 腾讯API</a>
               </li>
              
               <li class="article-tag-list-item">
