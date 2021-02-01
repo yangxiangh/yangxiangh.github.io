@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.Web安全分类 XSS（Cross Site Scripting,跨站脚本攻击），CSRF(Cross Site Request Forgery,跨站请求伪造)，点击劫持， URL跳转漏洞，SQL注入， OS命令注入。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-02T02:05:42.000Z">
-<meta property="article:modified_time" content="2021-02-01T03:42:16.282Z">
+<meta property="article:modified_time" content="2021-02-01T05:29:55.735Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="web安全">
 <meta name="twitter:card" content="summary">
@@ -232,6 +232,30 @@
 <p>该示例使用js-xss来实现XSS防御,可以看到h1标签呗保留,但script标签被转义.</p>
 <p>③HttpOnly Cookie</p>
 <p>这是防御XSS攻击窃取用户cookie最有效的方式,web用用程序在设置cookie时将其属性设置为HttpOnly.</p>
+</li>
+</ul>
+<p>3.CSRF</p>
+<ul>
+<li><p>是什么:跨站请求伪造,他利用户的登录身份,子啊用户不知情的情况下,以用户的名义完成非法操作.</p>
+</li>
+<li><p>CSRF攻击的必要条件:</p>
+<p>①用户登录长点A,并在本地存储cookie信息</p>
+<p>②在用户没有登出站带你A的情况下,访问恶意攻击者提供的危险站点B</p>
+<p>③站点A没有做防御措施</p>
+</li>
+<li><p>例子:用户登录转账界面,弹出诱惑性信息,用户点击危险网站连接,当危险网站连接加载时执行某一个请求,从而将用户的10块钱转入黑客账户.</p>
+</li>
+<li><p>*如何防御</p>
+<p>防范CSRF攻击可以遵循以下准则:</p>
+<p>①GET请求不对数据进行修改</p>
+<p>②不让第三方网站访问到本地cookie</p>
+<p>③阻止第三方网站请求接口</p>
+<p>④请求时附带校验信息,比如验证码,token</p>
+<p>防御手段:</p>
+<p>①SameSite:可以对cookie设置SameSite属性.该属性表示cookie不随着跨站请求发送,可以很大程度减少CSRF,但该属性不是所有浏览器都兼容</p>
+<p>②Referer Check: HTTP Referer时header的一部分,当浏览器向服务器发起请求时,一般会带上referer信息告诉服务器请求是从哪个连接发出.服务器可以通过该信息来防御CSRF.</p>
+<p>③Anti-CSRF-Token:该方案是目前比较完善的解决方案.即发送请求时在http请求中以参数的形式加入一个随机产生的token,并在服务器建立拦截器来验证token.服务器读取浏览器当前域cookie中的这个值,会进行校验该请求中的token中的token是否都存在且相等,才认为时合法请求.</p>
+<p>④验证码:应用程序和用户交互的过程中,特别是账户交易这种核心处理,强制用户输入验证码,才能最终完成请求.</p>
 </li>
 </ul>
 
@@ -481,11 +505,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,6 +538,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js  ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>test | xh小站长</title>
+  <title>github+hexo | xh小站长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人技术博客">
+  <meta name="description" content="记录搭建git博客的过程  准备工作 github账号,安装Node.js&#x2F;npm&#x2F;git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://example.com/2021/02/01/test/index.html">
+<meta property="og:title" content="github+hexo">
+<meta property="og:url" content="http://example.com/2021/02/01/github-hexo/index.html">
 <meta property="og:site_name" content="xh小站长">
-<meta property="og:description" content="个人技术博客">
+<meta property="og:description" content="记录搭建git博客的过程  准备工作 github账号,安装Node.js&#x2F;npm&#x2F;git">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-02-01T03:44:43.000Z">
-<meta property="article:modified_time" content="2021-02-01T03:44:43.992Z">
+<meta property="article:published_time" content="2021-02-01T05:37:27.000Z">
+<meta property="article:modified_time" content="2021-02-01T06:37:24.478Z">
 <meta property="article:author" content="Yangxh">
-<meta property="article:tag" content="技术记录">
+<meta property="article:tag" content="博客搭建">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="xh小站长" type="application/atom+xml">
@@ -164,27 +164,61 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-test" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-github-hexo" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      test
+      github+hexo
     </h1>
   
 
         
-        <a href="/2021/02/01/test/" class="archive-article-date">
-  	<time datetime="2021-02-01T03:44:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
+        <a href="/2021/02/01/github-hexo/" class="archive-article-date">
+  	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>记录搭建git博客的过程</p>
+<ul>
+<li><p>准备工作</p>
+<p>github账号,安装Node.js/npm/git</p>
+<a id="more"></a>
+</li>
+<li><p>本文使用的环境</p>
+<p>Node.js v14.15.4</p>
+<p>npm v6.14.10</p>
+<p>git v2.30.0</p>
+<p> hexo v4.2.0</p>
+</li>
+<li><p>搭建github博客</p>
+<p>①创建仓库</p>
+<p><em>注意</em>:必须以github账号.github.io为名称创建仓库,.将来博客的访问地址就是`http://用户名.github.io</p>
+<p>②绑定域名(选填,需要注册域名,需要花钱)</p>
+<p>③配置SSH key(提高安全性,用用户名和密码提交也可以) </p>
+</li>
+<li><p>使用hexo写博客</p>
+<p>①hexo简介</p>
+<p>hexo是一个简单,快速,强大的基于gitbub pages的博客发布工具,支持markdowm格式,有众多优秀主题.官网地址<code>http://hexo.io</code></p>
+<p>②原理</p>
+<p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p>
+<p>③安装hexo</p>
+<p><code>npm i -g hexo</code></p>
+<p>④初始化</p>
+<p>新建文件夹hexo,进入文件夹,<code>hexo init</code>,hexo会自动下载相关文件,包括所需要的依赖node-modules.</p>
+<p><code>hexo g</code> 生成静态文件</p>
+<p><code>hexo s</code>  启动本地文件</p>
+<p>执行以上命令,hexo会在public文件夹生成相关的惠特米勒文件, 这些文件将来需要提交到github上.服务启动后,访问<code>local host:4000</code>就可以看到默认主题的博客页面</p>
+
+
+</li>
+</ul>
+
       
 
       
@@ -213,6 +247,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客搭建</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -263,7 +308,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/01/test/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/01/github-hexo/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -411,11 +456,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -444,6 +489,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js  ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
