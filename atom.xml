@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-02-01T06:37:24.478Z</updated>
+  <updated>2021-02-01T06:52:49.864Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://example.com/2021/02/01/github-hexo/"/>
     <id>http://example.com/2021/02/01/github-hexo/</id>
     <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T06:37:24.478Z</updated>
+    <updated>2021-02-01T06:52:49.864Z</updated>
     
-    <content type="html"><![CDATA[<p>记录搭建git博客的过程</p><ul><li><p>准备工作</p><p>github账号,安装Node.js/npm/git</p><a id="more"></a></li><li><p>本文使用的环境</p><p>Node.js v14.15.4</p><p>npm v6.14.10</p><p>git v2.30.0</p><p> hexo v4.2.0</p></li><li><p>搭建github博客</p><p>①创建仓库</p><p><em>注意</em>:必须以github账号.github.io为名称创建仓库,.将来博客的访问地址就是`http://用户名.github.io</p><p>②绑定域名(选填,需要注册域名,需要花钱)</p><p>③配置SSH key(提高安全性,用用户名和密码提交也可以) </p></li><li><p>使用hexo写博客</p><p>①hexo简介</p><p>hexo是一个简单,快速,强大的基于gitbub pages的博客发布工具,支持markdowm格式,有众多优秀主题.官网地址<code>http://hexo.io</code></p><p>②原理</p><p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p><p>③安装hexo</p><p><code>npm i -g hexo</code></p><p>④初始化</p><p>新建文件夹hexo,进入文件夹,<code>hexo init</code>,hexo会自动下载相关文件,包括所需要的依赖node-modules.</p><p><code>hexo g</code> 生成静态文件</p><p><code>hexo s</code>  启动本地文件</p><p>执行以上命令,hexo会在public文件夹生成相关的惠特米勒文件, 这些文件将来需要提交到github上.服务启动后,访问<code>local host:4000</code>就可以看到默认主题的博客页面</p></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>记录搭建git博客的过程</p><ul><li><p>准备工作</p><p>github账号,安装Node.js/npm/git</p><a id="more"></a></li><li><p>本文使用的环境</p><p>Node.js v14.15.4</p><p>npm v6.14.10</p><p>git v2.30.0</p><p> hexo v4.2.0</p></li><li><p>搭建github博客</p><p>①创建仓库</p><p><em>注意</em>:必须以github账号.github.io为名称创建仓库,.将来博客的访问地址就是`http://用户名.github.io</p><p>②绑定域名(选填,需要注册域名,需要花钱)</p><p>③配置SSH key(提高安全性,用用户名和密码提交也可以) </p></li><li><p>使用hexo写博客</p><p>①hexo简介</p><p>hexo是一个简单,快速,强大的基于gitbub pages的博客发布工具,支持markdowm格式,有众多优秀主题.官网地址<code>http://hexo.io</code></p><p>②原理</p><p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p><p>③安装hexo</p><p><code>npm i -g hexo</code></p><p>④初始化</p><p>新建文件夹hexo,进入文件夹,<code>hexo init</code>,hexo会自动下载相关文件,包括所需要的依赖node-modules.</p><p><code>hexo g</code> 生成静态文件</p><p><code>hexo s</code>  启动本地文件</p><p>执行以上命令,hexo会在public文件夹生成相关的惠特米勒文件, 这些文件将来需要提交到github上.服务启动后,访问<code>local host:4000</code>就可以看到默认主题的博客页面</p><img src="/2021/02/01/github-hexo/1.png" class></li></ul>]]></content>
     
     
     <summary type="html">&lt;p&gt;记录搭建git博客的过程&lt;/p&gt;
@@ -35,6 +35,25 @@
     
     
     <category term="博客搭建" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>http</title>
+    <link href="http://example.com/2020/05/29/HTTP1%EF%BC%8CHTTP2,%20HTTPS/"/>
+    <id>http://example.com/2020/05/29/HTTP1%EF%BC%8CHTTP2,%20HTTPS/</id>
+    <published>2020-05-29T04:34:50.000Z</published>
+    <updated>2021-01-29T09:14:07.426Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.什么是Promise?</p><a id="more"></a><p>2.Promise的特点</p><p>3.</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;1.什么是Promise?&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="http" scheme="http://example.com/tags/http/"/>
     
   </entry>
   
@@ -71,25 +90,6 @@
     
     
     <category term="ES6" scheme="http://example.com/tags/ES6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>http</title>
-    <link href="http://example.com/2020/05/29/HTTP1%EF%BC%8CHTTP2,%20HTTPS/"/>
-    <id>http://example.com/2020/05/29/HTTP1%EF%BC%8CHTTP2,%20HTTPS/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-01-29T09:14:07.426Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.什么是Promise?</p><a id="more"></a><p>2.Promise的特点</p><p>3.</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;1.什么是Promise?&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="http" scheme="http://example.com/tags/http/"/>
     
   </entry>
   
@@ -244,25 +244,6 @@
   </entry>
   
   <entry>
-    <title>详细总结一下http的状态码，和浏览器的缓存机制</title>
-    <link href="http://example.com/2020/05/29/http%E7%8A%B6%E6%80%81%E7%A0%81/"/>
-    <id>http://example.com/2020/05/29/http%E7%8A%B6%E6%80%81%E7%A0%81/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-01-29T09:20:27.515Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.什么是Promise?</p><a id="more"></a><p>2.Promise的特点</p><p>3.</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;1.什么是Promise?&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="http 缓存" scheme="http://example.com/tags/http-%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>webpack中的loader和plugins</title>
     <link href="http://example.com/2020/05/29/loader,plugins/"/>
     <id>http://example.com/2020/05/29/loader,plugins/</id>
@@ -278,6 +259,25 @@
     
     
     <category term="webpack" scheme="http://example.com/tags/webpack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>详细总结一下http的状态码，和浏览器的缓存机制</title>
+    <link href="http://example.com/2020/05/29/http%E7%8A%B6%E6%80%81%E7%A0%81/"/>
+    <id>http://example.com/2020/05/29/http%E7%8A%B6%E6%80%81%E7%A0%81/</id>
+    <published>2020-05-29T04:34:50.000Z</published>
+    <updated>2021-01-29T09:20:27.515Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.什么是Promise?</p><a id="more"></a><p>2.Promise的特点</p><p>3.</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;1.什么是Promise?&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="http 缓存" scheme="http://example.com/tags/http-%E7%BC%93%E5%AD%98/"/>
     
   </entry>
   
