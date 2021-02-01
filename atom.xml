@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-02-01T07:17:31.885Z</updated>
+  <updated>2021-02-01T07:41:41.247Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,191 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅谈BFC</title>
+    <link href="http://example.com/2021/02/01/BFC/"/>
+    <id>http://example.com/2021/02/01/BFC/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.什么是BFC?</p><p>BFC全称<strong>块级格式化上下文</strong>。他是一个独立渲染区域，规定内部元素如何布局。当涉及可视化布局的时候，BFC提供一个环境，html元素在这个环境中按照规则进行布局。一个环境中的元素不会影响到其他环境的布局。</p><a id="more"></a><p>2.触发BFC的条件</p><ul><li>根元素（html)</li><li>浮动的元素（float不为none）</li><li>position为absolute或fixed</li><li>display的值为inlin-block,table-cell,flex,table-caption,inlin-flex</li><li>overflow的值不是visible</li><li>计算BFC高度时，考虑BFC包含的所有元素，浮动元素也要计算在内</li></ul><p>3.BFC的布局规则</p><ul><li>内部的盒子，会在垂直方向上一个节一个排列</li><li>盒子垂直方向的距离由margin决定。属于同一个BFC的两个相邻的盒子的margin会发生重叠</li><li>每个盒子（包括块盒和行盒）的margin box的左边，与包含border box的左边想接触。即使浮动也是如此</li><li>BFC的区域不会与float box 重叠</li><li>BFC就是页面上的一个独立的容器，容器内的子元素不会收到外面元素的应影响</li></ul><p>4.BFC可以解决什么问题</p><ul><li>垂直外边距重叠问题</li><li>消除浮动产生的影响</li><li>自适应两栏布局</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;1.什么是BFC?&lt;/p&gt;
+&lt;p&gt;BFC全称&lt;strong&gt;块级格式化上下文&lt;/strong&gt;。他是一个独立渲染区域，规定内部元素如何布局。当涉及可视化布局的时候，BFC提供一个环境，html元素在这个环境中按照规则进行布局。一个环境中的元素不会影响到其他环境的布局。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="HTML CSS" scheme="http://example.com/tags/HTML-CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DOM是事件流</title>
+    <link href="http://example.com/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/"/>
+    <id>http://example.com/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ES6, ES7, ES8的新特性</title>
+    <link href="http://example.com/2021/02/01/ES6,7,8%E7%89%B9%E6%80%A7/"/>
+    <id>http://example.com/2021/02/01/ES6,7,8%E7%89%B9%E6%80%A7/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    
+    
+    
+    
+    <category term="ES6" scheme="http://example.com/tags/ES6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>http</title>
+    <link href="http://example.com/2021/02/01/HTTP1%EF%BC%8CHTTP2,%20HTTPS/"/>
+    <id>http://example.com/2021/02/01/HTTP1%EF%BC%8CHTTP2,%20HTTPS/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    
+    
+    
+    
+    <category term="http" scheme="http://example.com/tags/http/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JSPON的实现原理</title>
+    <link href="http://example.com/2021/02/01/JSONP/"/>
+    <id>http://example.com/2021/02/01/JSONP/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    
+    
+    
+    
+    <category term="JSONP" scheme="http://example.com/tags/JSONP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>谈谈MVVM和MVC</title>
+    <link href="http://example.com/2021/02/01/MVVM%EF%BC%8CMVC/"/>
+    <id>http://example.com/2021/02/01/MVVM%EF%BC%8CMVC/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>computed/watch的原理及区别</title>
+    <link href="http://example.com/2021/02/01/computed%EF%BC%8Cwatch/"/>
+    <id>http://example.com/2021/02/01/computed%EF%BC%8Cwatch/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    
+    
+    
+    
+    <category term="Vue.js" scheme="http://example.com/tags/Vue-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cookie相关知识</title>
+    <link href="http://example.com/2021/02/01/cookie/"/>
+    <id>http://example.com/2021/02/01/cookie/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    
+    
+    
+    
+    <category term="cookie" scheme="http://example.com/tags/cookie/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS3新特性</title>
+    <link href="http://example.com/2021/02/01/css3%E5%8A%A8%E7%94%BB/"/>
+    <id>http://example.com/2021/02/01/css3%E5%8A%A8%E7%94%BB/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.CSS动画?</p><a id="more"></a>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;1.CSS动画?&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="CSS3" scheme="http://example.com/tags/CSS3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS实现居中</title>
+    <link href="http://example.com/2021/02/01/css%E5%AE%9E%E7%8E%B0%E5%89%A7%E4%B8%AD/"/>
+    <id>http://example.com/2021/02/01/css%E5%AE%9E%E7%8E%B0%E5%89%A7%E4%B8%AD/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    
+    
+    
+    
+    <category term="CSS" scheme="http://example.com/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EventLoop</title>
+    <link href="http://example.com/2021/02/01/event%20loop/"/>
+    <id>http://example.com/2021/02/01/event%20loop/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    
+    
+    
+    
+    <category term="js" scheme="http://example.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>写写我对Promise的理解</title>
+    <link href="http://example.com/2021/02/01/flex/"/>
+    <id>http://example.com/2021/02/01/flex/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
+    
+    
+    
+    
+    
+    <category term="js  ES6" scheme="http://example.com/tags/js-ES6/"/>
+    
+  </entry>
   
   <entry>
     <title>github+hexo</title>
@@ -39,176 +224,11 @@
   </entry>
   
   <entry>
-    <title>DOM是事件流</title>
-    <link href="http://example.com/2020/05/29/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/"/>
-    <id>http://example.com/2020/05/29/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:45.626Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ES6, ES7, ES8的新特性</title>
-    <link href="http://example.com/2020/05/29/ES6,7,8%E7%89%B9%E6%80%A7/"/>
-    <id>http://example.com/2020/05/29/ES6,7,8%E7%89%B9%E6%80%A7/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:42.361Z</updated>
-    
-    
-    
-    
-    
-    <category term="ES6" scheme="http://example.com/tags/ES6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>http</title>
-    <link href="http://example.com/2020/05/29/HTTP1%EF%BC%8CHTTP2,%20HTTPS/"/>
-    <id>http://example.com/2020/05/29/HTTP1%EF%BC%8CHTTP2,%20HTTPS/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:29.461Z</updated>
-    
-    
-    
-    
-    
-    <category term="http" scheme="http://example.com/tags/http/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JSPON的实现原理</title>
-    <link href="http://example.com/2020/05/29/JSONP/"/>
-    <id>http://example.com/2020/05/29/JSONP/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:22.028Z</updated>
-    
-    
-    
-    
-    
-    <category term="JSONP" scheme="http://example.com/tags/JSONP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>谈谈MVVM和MVC</title>
-    <link href="http://example.com/2020/05/29/MVVM%EF%BC%8CMVC/"/>
-    <id>http://example.com/2020/05/29/MVVM%EF%BC%8CMVC/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:14.462Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>computed/watch的原理及区别</title>
-    <link href="http://example.com/2020/05/29/computed%EF%BC%8Cwatch/"/>
-    <id>http://example.com/2020/05/29/computed%EF%BC%8Cwatch/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:20:11.572Z</updated>
-    
-    
-    
-    
-    
-    <category term="Vue.js" scheme="http://example.com/tags/Vue-js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>cookie相关知识</title>
-    <link href="http://example.com/2020/05/29/cookie/"/>
-    <id>http://example.com/2020/05/29/cookie/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:20:04.595Z</updated>
-    
-    
-    
-    
-    
-    <category term="cookie" scheme="http://example.com/tags/cookie/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS3新特性</title>
-    <link href="http://example.com/2020/05/29/css3%E5%8A%A8%E7%94%BB/"/>
-    <id>http://example.com/2020/05/29/css3%E5%8A%A8%E7%94%BB/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:20:00.535Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.CSS动画?</p><a id="more"></a>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;1.CSS动画?&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="CSS3" scheme="http://example.com/tags/CSS3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS实现居中</title>
-    <link href="http://example.com/2020/05/29/css%E5%AE%9E%E7%8E%B0%E5%89%A7%E4%B8%AD/"/>
-    <id>http://example.com/2020/05/29/css%E5%AE%9E%E7%8E%B0%E5%89%A7%E4%B8%AD/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:49.186Z</updated>
-    
-    
-    
-    
-    
-    <category term="CSS" scheme="http://example.com/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EventLoop</title>
-    <link href="http://example.com/2020/05/29/event%20loop/"/>
-    <id>http://example.com/2020/05/29/event%20loop/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:38.976Z</updated>
-    
-    
-    
-    
-    
-    <category term="js" scheme="http://example.com/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>写写我对Promise的理解</title>
-    <link href="http://example.com/2020/05/29/flex/"/>
-    <id>http://example.com/2020/05/29/flex/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:35.474Z</updated>
-    
-    
-    
-    
-    
-    <category term="js  ES6" scheme="http://example.com/tags/js-ES6/"/>
-    
-  </entry>
-  
-  <entry>
     <title>详细总结一下http的状态码，和浏览器的缓存机制</title>
-    <link href="http://example.com/2020/05/29/http%E7%8A%B6%E6%80%81%E7%A0%81/"/>
-    <id>http://example.com/2020/05/29/http%E7%8A%B6%E6%80%81%E7%A0%81/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:26.004Z</updated>
+    <link href="http://example.com/2021/02/01/http%E7%8A%B6%E6%80%81%E7%A0%81/"/>
+    <id>http://example.com/2021/02/01/http%E7%8A%B6%E6%80%81%E7%A0%81/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.998Z</updated>
     
     
     
@@ -220,10 +240,10 @@
   
   <entry>
     <title>webpack中的loader和plugins</title>
-    <link href="http://example.com/2020/05/29/loader,plugins/"/>
-    <id>http://example.com/2020/05/29/loader,plugins/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:18.327Z</updated>
+    <link href="http://example.com/2021/02/01/loader,plugins/"/>
+    <id>http://example.com/2021/02/01/loader,plugins/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
     
     
     
@@ -235,10 +255,10 @@
   
   <entry>
     <title>深入学习$nextTick</title>
-    <link href="http://example.com/2020/05/29/nextTick/"/>
-    <id>http://example.com/2020/05/29/nextTick/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:10.493Z</updated>
+    <link href="http://example.com/2021/02/01/nextTick/"/>
+    <id>http://example.com/2021/02/01/nextTick/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
     
     
     
@@ -250,10 +270,10 @@
   
   <entry>
     <title>Node.js学习积累</title>
-    <link href="http://example.com/2020/05/29/node%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
-    <id>http://example.com/2020/05/29/node%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:06.506Z</updated>
+    <link href="http://example.com/2021/02/01/node%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
+    <id>http://example.com/2021/02/01/node%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
     
     
     
@@ -265,10 +285,10 @@
   
   <entry>
     <title>js的数据类型，null和u年底fined却别</title>
-    <link href="http://example.com/2020/05/29/null,undefined/"/>
-    <id>http://example.com/2020/05/29/null,undefined/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:19:03.046Z</updated>
+    <link href="http://example.com/2021/02/01/null,undefined/"/>
+    <id>http://example.com/2021/02/01/null,undefined/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
     
     
     
@@ -280,10 +300,10 @@
   
   <entry>
     <title>写写我对Promise的理解</title>
-    <link href="http://example.com/2020/05/29/promise/"/>
-    <id>http://example.com/2020/05/29/promise/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-01-29T08:23:48.224Z</updated>
+    <link href="http://example.com/2021/02/01/promise/"/>
+    <id>http://example.com/2021/02/01/promise/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
     
     <content type="html"><![CDATA[<p>1.什么是Promise?</p><a id="more"></a><p>2.Promise的特点</p><p>3.</p>]]></content>
     
@@ -299,35 +319,16 @@
   
   <entry>
     <title>Vue响应式的原理</title>
-    <link href="http://example.com/2020/05/29/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/"/>
-    <id>http://example.com/2020/05/29/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:18:55.960Z</updated>
+    <link href="http://example.com/2021/02/01/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/"/>
+    <id>http://example.com/2021/02/01/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-01T07:41:41.247Z</updated>
     
     
     
     
     
     <category term="Vue.js" scheme="http://example.com/tags/Vue-js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Webpake学习经验</title>
-    <link href="http://example.com/2020/05/29/webpack/"/>
-    <id>http://example.com/2020/05/29/webpack/</id>
-    <published>2020-05-29T04:34:50.000Z</published>
-    <updated>2021-02-01T07:18:50.304Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.webpack安装?</p><a id="more"></a>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;1.webpack安装?&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="webpack" scheme="http://example.com/tags/webpack/"/>
     
   </entry>
   
