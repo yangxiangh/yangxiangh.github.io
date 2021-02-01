@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/02/01/github-hexo/1.png">
 <meta property="article:published_time" content="2021-02-01T05:37:27.000Z">
-<meta property="article:modified_time" content="2021-02-01T06:52:49.864Z">
+<meta property="article:modified_time" content="2021-02-01T07:17:31.885Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="博客搭建">
 <meta name="twitter:card" content="summary">
@@ -218,6 +218,26 @@
 <p>执行以上命令,hexo会在public文件夹生成相关的惠特米勒文件, 这些文件将来需要提交到github上.服务启动后,访问<code>local host:4000</code>就可以看到默认主题的博客页面</p>
 <img src="/2021/02/01/github-hexo/1.png" class>
 
+<p>⑤修改主题</p>
+<p>下载主题:<code>git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</code></p>
+<p>修改<em>_config.yml</em>中的theme属性为<code>theme: yilia</code>, 然后一次执行<code>hexo clean</code>,    <code>hexo g</code>,  <code>hexo s</code>重新生成页面.</p>
+<p>⑥上传代码:     <code>hexo d</code></p>
+<p>配置<em>_config.yml</em>中有关deploy的部分</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type: git </span><br><span class="line">repository: https:<span class="comment">//github.com/yangxiangh/yangxiangh.github.io.git </span></span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+<p>⑦写博客</p>
+<p>执行<code>hexo new 文章名称</code>, hexo会在_posts文件夹下生成对应的md文件.可以使用<em>Typora</em>编辑器进行文章编写.   </p>
+</li>
+<li><p>踩过的坑</p>
+<p>①文章中引入本地图片</p>
+<p>1).修改<em>_config.yml</em>文件:<code>post_asset_folder: true</code>,修改该属性后,创建文章会自动的创建同名文件夹,将该文章所需要的图片放在该文件夹下.</p>
+<p>2).使用Typora编辑器的快捷键<code>ctrl+shift+i</code>引入图片不显示.需要安装插件<code>npm install https://github.com/7ym0n/hexo-asset-image --save</code>, 引用图片<code>&#123;% asset_img  1.png  %&#125;</code></p>
+<p>②点击文章出现小红心效果</p>
+<p>在<code>hexo/themes/yilia/source</code>目录下创建love.js文件, 文件内容如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!function(e,t,a)&#123;function r()&#123;for(var e&#x3D;0;e&lt;s.length;e++)s[e].alpha&lt;&#x3D;0?(t.body.removeChild(s[e].el),s.splice(e,1)):(s[e].y--,s[e].scale+&#x3D;.004,s[e].alpha-&#x3D;.013,s[e].el.style.cssText&#x3D;&quot;left:&quot;+s[e].x+&quot;px;top:&quot;+s[e].y+&quot;px;opacity:&quot;+s[e].alpha+&quot;;transform:scale(&quot;+s[e].scale+&quot;,&quot;+s[e].scale+&quot;) rotate(45deg);background:&quot;+s[e].color+&quot;;z-index:99999&quot;);requestAnimationFrame(r)&#125;function n()&#123;var t&#x3D;&quot;function&quot;&#x3D;&#x3D;typeof e.onclick&amp;&amp;e.onclick;e.onclick&#x3D;function(e)&#123;t&amp;&amp;t(),o(e)&#125;&#125;function o(e)&#123;var a&#x3D;t.createElement(&quot;div&quot;);a.className&#x3D;&quot;heart&quot;,s.push(&#123;el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:c()&#125;),t.body.appendChild(a)&#125;function i(e)&#123;var a&#x3D;t.createElement(&quot;style&quot;);a.type&#x3D;&quot;text&#x2F;css&quot;;try&#123;a.appendChild(t.createTextNode(e))&#125;catch(t)&#123;a.styleSheet.cssText&#x3D;e&#125;t.getElementsByTagName(&quot;head&quot;)[0].appendChild(a)&#125;function c()&#123;return&quot;rgb(&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;)&quot;&#125;var s&#x3D;[];e.requestAnimationFrame&#x3D;e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e)&#123;setTimeout(e,1e3&#x2F;60)&#125;,i(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#39;&#39;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;),n(),r()&#125;(window,document);</span><br></pre></td></tr></table></figure>
+<p>③在<code>hexo/themes/yilia/layout/_partial/footer.ejs</code>文件的最后添加下列代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--页面点击小红心--&gt;</span><br><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;/love.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
 </li>
 </ul>
 
@@ -325,8 +345,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2020/05/29/HTTP1%EF%BC%8CHTTP2,%20HTTPS/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">http</div>
+    <a href="/2020/05/29/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">DOM是事件流</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -458,11 +478,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -498,11 +518,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color3">http 缓存</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">http 缓存</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
