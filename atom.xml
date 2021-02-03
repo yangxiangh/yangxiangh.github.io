@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-02-01T07:41:41.247Z</updated>
+  <updated>2021-02-03T03:27:04.008Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DOM事件流</title>
+    <link href="http://example.com/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/"/>
+    <id>http://example.com/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/</id>
+    <published>2021-02-01T05:37:27.000Z</published>
+    <updated>2021-02-03T03:27:04.008Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.什么事件流</p><blockquote><p>js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。</p></blockquote><p>事件发生时会在元素节点和根节点直接按照特定顺序传播，路径经过的所有节点都会收到该事件，这个传播过程就叫做DOM事件流。</p><a id="more"></a><p>2.事件流的分类</p><p>（1）冒泡型的事件流（任何浏览器都支持）</p><p>事件传播的顺序时从最特定的事件目标到最不特定的事件目标。即从DOM树的叶子节点春波到根节点</p><p>div-&gt;body-&gt;html-&gt;document</p><p>（2）捕获型的事件流（IE8以下不支持）</p><p>事件的传播顺序是从最不特定的时间目标到最特定的事件目标。即从根节点传播到叶子节点</p><p>document -&gt;html -&gt; body -&gt;div</p><p>3.DOM事件流</p><img src="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/1.png" class><p>DOM标准采用捕获+冒泡。两种事件流都会触发DOM的所有对象。从Document开始到document结束。</p><p>DOM 标准规定事件流包含三个阶段：事件捕获阶段/目标阶段/事件冒泡阶段</p><p>事件捕获阶段：实际目标（div)在捕获阶段不会接收事件。也就是在捕获阶段，事件从Document到html再到body就停止了</p><p>目标阶段：事件在div上发生并处理。但是事件处理会被看成冒泡阶段的一部分</p><p>事件冒泡阶段：事件又被传递回document</p><p><strong>note</strong>:并不是所有的事件都会经过事件冒泡阶段，但是多有事件都会经过事件捕获和目标阶段。例如，获取输入焦点的focus事件和失去焦点blur事件。</p><p>4.事件shi流的典型应用：事件代理</p><p>背景：传统事件处理中，需要为每个元素添加事件处理器，js代理则是一种简单有效的技巧，通过它可以把事件处理器添加到一个父级元素上，从而避免鲍书简处理器添加到多个子级元素上。</p><p>原理：事件代理就是利用事件冒泡和目标元素，把事件处理器添加到父元素上，等待子元素事件冒泡，并且父元素能够通过target（IE为srcElement）判断是哪个子元素，从而做相应的处理。</p><p>优点：</p><ul><li>将多个事件处理减少到一个，因为事件处理器要驻留内存，从而提高性能</li><li>DOM更新无需重新绑定事件处理器，因为事件代理对不同子元素可以采用不同的处理方式 </li></ul><p>缺点：例如事件代理中同时绑定li和span，当点击span时，li和span 都会冒泡</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;li&gt;<span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>li内的span<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>&lt;/li&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    $(<span class="built_in">document</span>).on(<span class="string">&#x27;click&#x27;</span>, <span class="string">&#x27;li&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;alert(<span class="string">&#x27;li&#x27;</span>)&#125;);</span><br><span class="line">$(<span class="built_in">document</span>).on(<span class="string">&#x27;click&#x27;</span>, <span class="string">&#x27;span&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;alert(<span class="string">&#x27;li span&#x27;</span>)&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure><p>解决办法：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">方法一：span的事件处理程序中，阻止冒泡</span><br><span class="line">$(<span class="built_in">document</span>).on(<span class="string">&#x27;click&#x27;</span>, <span class="string">&#x27;span&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;li span&#x27;</span>);</span><br><span class="line">    e.stopPropagation();</span><br><span class="line">&#125;)</span><br><span class="line">方法二：li的事件处理程序中检测target元素</span><br><span class="line">$(<span class="built_in">document</span>).on(<span class="string">&#x27;click&#x27;</span>,<span class="string">&#x27;li&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(e.target.nodeName === <span class="string">&#x27;span&#x27;</span>)&#123;</span><br><span class="line">e.stopPropagation();</span><br><span class="line">        rerurn;</span><br><span class="line">    &#125;</span><br><span class="line">    alert(<span class="string">&#x27;li&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;1.什么事件流&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;事件发生时会在元素节点和根节点直接按照特定顺序传播，路径经过的所有节点都会收到该事件，这个传播过程就叫做DOM事件流。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>浅谈BFC</title>
@@ -33,191 +54,6 @@
     
     
     <category term="HTML CSS" scheme="http://example.com/tags/HTML-CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DOM事件流</title>
-    <link href="http://example.com/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/"/>
-    <id>http://example.com/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T10:50:50.825Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.什么事件流</p><blockquote><p>js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。</p></blockquote><p>2.事件冒泡</p><p>3.事件捕获</p><p>4.事件流</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;1.什么事件流&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。&lt;/p&gt;
-&lt;/blockquote</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ES6, ES7, ES8的新特性</title>
-    <link href="http://example.com/2021/02/01/ES6,7,8%E7%89%B9%E6%80%A7/"/>
-    <id>http://example.com/2021/02/01/ES6,7,8%E7%89%B9%E6%80%A7/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-    <category term="ES6" scheme="http://example.com/tags/ES6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>http</title>
-    <link href="http://example.com/2021/02/01/HTTP1%EF%BC%8CHTTP2,%20HTTPS/"/>
-    <id>http://example.com/2021/02/01/HTTP1%EF%BC%8CHTTP2,%20HTTPS/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-    <category term="http" scheme="http://example.com/tags/http/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记录一个使用JSOP解决跨域坑</title>
-    <link href="http://example.com/2021/02/01/JSONP/"/>
-    <id>http://example.com/2021/02/01/JSONP/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T10:40:24.367Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>问题背景(angular项目)</li></ul><p>项目使用nginx配置代理，线上调用腾讯地图WebService API时产生跨域问题。服务端不能解跨域这种跨域问题，只能由前端去探索。例如：关键词输入提示接口(<a href="https://apis.map.qq.com/ws/place/v1/suggestion?keyword=%E6%9C%9D%E9%98%B3&amp;region=%E5%8C%97%E4%BA%AC%E5%B8%82&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77)%E3%80%82%E5%85%B6%E5%AE%9E%E5%AE%98%E7%BD%91%E5%B7%B2%E7%BB%8F%E7%BB%99%E5%87%BA%E7%AD%94%E6%A1%88%EF%BC%8C%E5%A6%82%E5%9B%BE">https://apis.map.qq.com/ws/place/v1/suggestion?keyword=朝阳&amp;region=北京市&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77)。其实官网已经给出答案，如图</a></p><img src="/2021/02/01/JSONP/1.png" class><p>①在app.module.ts中，注入JsonpModule模块</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;JsonpModule&#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/http&#x27;</span>;</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">    imports:[</span><br><span class="line">        JsonpModule</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>②在业务组件中使用</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;HttpClient&#125; <span class="keyword">from</span> <span class="string">&quot;@angular/common/http&quot;</span>;</span><br><span class="line"><span class="function"><span class="title">constructor</span>(<span class="params">private http:HttpClient</span>)</span>&#123;&#125;</span><br><span class="line"> <span class="function"><span class="title">suggest</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">     <span class="comment">//注意添加output=jsonp参数</span></span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&#x27;https://apis.map.qq.com/ws/place/v1/suggestion/?region=&amp;&#x27;</span>+<span class="string">&#x27;keyword=&#x27;</span>+<span class="string">&#x27;北京&#x27;</span>+<span class="string">&#x27;&amp;output=jsonp&amp;key=XQEBZ-WWO3U-7AWVZ-4CDZD-KL6R3-W4BEF&#x27;</span>;</span><br><span class="line">    <span class="built_in">this</span>.http.jsonp(url, <span class="string">&#x27;callback&#x27;</span>).subscribe(</span><br><span class="line">      res =&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> data = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(res))<span class="comment">//返回的jsonp数据需要解析才能使用</span></span><br><span class="line">        <span class="built_in">this</span>.listOfOption = data.data;</span><br><span class="line">        <span class="built_in">console</span>.log(data.data);</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br></pre></td></tr></table></figure><ul><li><p>解决完问题，来研究以下JSONP（JSON with Padding）的原理及实现</p><p>参考地址：<a href="https://blog.csdn.net/inite/article/details/80333130">https://blog.csdn.net/inite/article/details/80333130</a> </p><p>1.什么是JSONP</p><p>JSON是一种轻量级的数据传输格式，被广泛应用于当前web应用中。虽然JSONP虽然和JSON只相差一个字母，但是他们完全不是一回事。JSON是一种数据交换格式，而JSONP是一种<em>非官方跨域数据交换协议</em>。就如同，json是用来书写情报和交换的暗号，而jsonp是把用暗号书写的情报传递给自己同志时使用的街头方式。</p><p>2.JSONP的原理</p><p>ajax请求受同源策略的影响，不允许进行跨站请求。而script标签的src属性中的连接却可以访问跨域的js脚本。利用这个特性，服务端不在返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行调用，这样实现了跨域。</p><p>3.JSONP的具体实现</p><p>未完待续…</p></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;问题背景(angular项目)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;项目使用nginx配置代理，线上调用腾讯地图WebService API时产生跨域问题。服务端不能解跨域这种跨域问题，只能由前端去探索。例如：关键词输入提示接口(&lt;a href=&quot;https://api</summary>
-      
-    
-    
-    
-    
-    <category term="JSONP 腾讯API" scheme="http://example.com/tags/JSONP-%E8%85%BE%E8%AE%AFAPI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>谈谈MVVM和MVC</title>
-    <link href="http://example.com/2021/02/01/MVVM%EF%BC%8CMVC/"/>
-    <id>http://example.com/2021/02/01/MVVM%EF%BC%8CMVC/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>computed/watch的原理及区别</title>
-    <link href="http://example.com/2021/02/01/computed%EF%BC%8Cwatch/"/>
-    <id>http://example.com/2021/02/01/computed%EF%BC%8Cwatch/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-    <category term="Vue.js" scheme="http://example.com/tags/Vue-js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>cookie相关知识</title>
-    <link href="http://example.com/2021/02/01/cookie/"/>
-    <id>http://example.com/2021/02/01/cookie/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-    <category term="cookie" scheme="http://example.com/tags/cookie/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS3新特性</title>
-    <link href="http://example.com/2021/02/01/css3%E5%8A%A8%E7%94%BB/"/>
-    <id>http://example.com/2021/02/01/css3%E5%8A%A8%E7%94%BB/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.CSS动画?</p><a id="more"></a>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;1.CSS动画?&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="CSS3" scheme="http://example.com/tags/CSS3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS实现居中</title>
-    <link href="http://example.com/2021/02/01/css%E5%AE%9E%E7%8E%B0%E5%89%A7%E4%B8%AD/"/>
-    <id>http://example.com/2021/02/01/css%E5%AE%9E%E7%8E%B0%E5%89%A7%E4%B8%AD/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-    <category term="CSS" scheme="http://example.com/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EventLoop</title>
-    <link href="http://example.com/2021/02/01/event%20loop/"/>
-    <id>http://example.com/2021/02/01/event%20loop/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-    <category term="js" scheme="http://example.com/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>写写我对Promise的理解</title>
-    <link href="http://example.com/2021/02/01/flex/"/>
-    <id>http://example.com/2021/02/01/flex/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-    <category term="js  ES6" scheme="http://example.com/tags/js-ES6/"/>
     
   </entry>
   
@@ -244,111 +80,44 @@
   </entry>
   
   <entry>
-    <title>详细总结一下http的状态码，和浏览器的缓存机制</title>
-    <link href="http://example.com/2021/02/01/http%E7%8A%B6%E6%80%81%E7%A0%81/"/>
-    <id>http://example.com/2021/02/01/http%E7%8A%B6%E6%80%81%E7%A0%81/</id>
+    <title>记录一个使用JSOP解决跨域坑</title>
+    <link href="http://example.com/2021/02/01/JSONP/"/>
+    <id>http://example.com/2021/02/01/JSONP/</id>
     <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.998Z</updated>
+    <updated>2021-02-03T03:30:34.540Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>问题背景(angular项目)</li></ul><p>项目使用nginx配置代理，线上调用腾讯地图WebService API时产生跨域问题。服务端不能解跨域这种跨域问题，只能由前端去探索。例如：关键词输入提示接口(<a href="https://apis.map.qq.com/ws/place/v1/suggestion?keyword=%E6%9C%9D%E9%98%B3&amp;region=%E5%8C%97%E4%BA%AC%E5%B8%82&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77)%E3%80%82%E5%85%B6%E5%AE%9E%E5%AE%98%E7%BD%91%E5%B7%B2%E7%BB%8F%E7%BB%99%E5%87%BA%E7%AD%94%E6%A1%88%EF%BC%8C%E5%A6%82%E5%9B%BE">https://apis.map.qq.com/ws/place/v1/suggestion?keyword=朝阳&amp;region=北京市&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77)。其实官网已经给出答案，如图</a></p><a id="more"></a><img src="/2021/02/01/JSONP/1.png" class><p>①在app.module.ts中，注入JsonpModule模块</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;JsonpModule&#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/http&#x27;</span>;</span><br><span class="line">@NgModule(&#123;</span><br><span class="line">    imports:[</span><br><span class="line">        JsonpModule</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>②在业务组件中使用</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;HttpClient&#125; <span class="keyword">from</span> <span class="string">&quot;@angular/common/http&quot;</span>;</span><br><span class="line"><span class="function"><span class="title">constructor</span>(<span class="params">private http:HttpClient</span>)</span>&#123;&#125;</span><br><span class="line"> <span class="function"><span class="title">suggest</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">     <span class="comment">//注意添加output=jsonp参数</span></span><br><span class="line">    <span class="keyword">let</span> url = <span class="string">&#x27;https://apis.map.qq.com/ws/place/v1/suggestion/?region=&amp;&#x27;</span>+<span class="string">&#x27;keyword=&#x27;</span>+<span class="string">&#x27;北京&#x27;</span>+<span class="string">&#x27;&amp;output=jsonp&amp;key=XQEBZ-WWO3U-7AWVZ-4CDZD-KL6R3-W4BEF&#x27;</span>;</span><br><span class="line">    <span class="built_in">this</span>.http.jsonp(url, <span class="string">&#x27;callback&#x27;</span>).subscribe(</span><br><span class="line">      res =&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> data = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(res))<span class="comment">//返回的jsonp数据需要解析才能使用</span></span><br><span class="line">        <span class="built_in">this</span>.listOfOption = data.data;</span><br><span class="line">        <span class="built_in">console</span>.log(data.data);</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br></pre></td></tr></table></figure><ul><li><p>解决完问题，来研究以下JSONP（JSON with Padding）的原理及实现</p><p>参考地址：<a href="https://blog.csdn.net/inite/article/details/80333130">https://blog.csdn.net/inite/article/details/80333130</a> </p><p>1.什么是JSONP</p><p>JSON是一种轻量级的数据传输格式，被广泛应用于当前web应用中。虽然JSONP虽然和JSON只相差一个字母，但是他们完全不是一回事。JSON是一种数据交换格式，而JSONP是一种<em>非官方跨域数据交换协议</em>。就如同，json是用来书写情报和交换的暗号，而jsonp是把用暗号书写的情报传递给自己同志时使用的街头方式。</p><p>2.JSONP的原理</p><p>ajax请求受同源策略的影响，不允许进行跨站请求。而script标签的src属性中的连接却可以访问跨域的js脚本。利用这个特性，服务端不在返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行调用，这样实现了跨域。</p><p>3.JSONP的具体实现</p><p>未完待续…</p></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;问题背景(angular项目)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;项目使用nginx配置代理，线上调用腾讯地图WebService API时产生跨域问题。服务端不能解跨域这种跨域问题，只能由前端去探索。例如：关键词输入提示接口(&lt;a href=&quot;https://apis.map.qq.com/ws/place/v1/suggestion?keyword=%E6%9C%9D%E9%98%B3&amp;amp;region=%E5%8C%97%E4%BA%AC%E5%B8%82&amp;amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77)%E3%80%82%E5%85%B6%E5%AE%9E%E5%AE%98%E7%BD%91%E5%B7%B2%E7%BB%8F%E7%BB%99%E5%87%BA%E7%AD%94%E6%A1%88%EF%BC%8C%E5%A6%82%E5%9B%BE&quot;&gt;https://apis.map.qq.com/ws/place/v1/suggestion?keyword=朝阳&amp;amp;region=北京市&amp;amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77)。其实官网已经给出答案，如图&lt;/a&gt;&lt;/p&gt;</summary>
     
     
     
     
-    
-    <category term="http 缓存" scheme="http://example.com/tags/http-%E7%BC%93%E5%AD%98/"/>
+    <category term="JSONP 腾讯API" scheme="http://example.com/tags/JSONP-%E8%85%BE%E8%AE%AFAPI/"/>
     
   </entry>
   
   <entry>
-    <title>webpack中的loader和plugins</title>
-    <link href="http://example.com/2021/02/01/loader,plugins/"/>
-    <id>http://example.com/2021/02/01/loader,plugins/</id>
+    <title>web安全问题总结</title>
+    <link href="http://example.com/2021/02/01/web%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/"/>
+    <id>http://example.com/2021/02/01/web%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/</id>
     <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
+    <updated>2021-02-01T09:04:58.007Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.Web安全分类</p><p>XSS（Cross Site Scripting,跨站脚本攻击），CSRF(Cross Site Request Forgery,跨站请求伪造)，点击劫持， URL跳转漏洞，SQL注入， OS命令注入。</p><a id="more"></a><p>2.XSS</p><ul><li><p>XSS原理，影响及分类</p><p>跨站脚本攻击。XSS的重点不在于跨站点，而在于脚本的执行。</p><p>原理：恶意攻击者在web端插入一些恶意的js代码，当用户浏览该页面的时候， 嵌入web端的js代码就会自动执行，因而达到恶意攻击的目的。</p><p>分类：反射型/DOM-base型/存储型（持久性）</p><p>影响：利用虚假输入表单获取用户个人信息/利用脚本窃取用户的cookie值，在用户不知情的情况下，发送恶意请求/显示伪造的内容</p></li><li><p>反射型XSS（非持久型）</p><p>一般是通过给用户发送带有恶意脚本代码的URL，当URL被打开时，特有的恶意代码会被执行。例如:<code>http://xx.com/xx?default=&lt;script&gt; alert(document.cookie)&lt;/script&gt;</code>,好在大部分浏览器内置了一些XSS过滤器,可以防止大部分反射型的XSS攻击.</p><p>反射型的XSS攻击有以下几点特征:</p><p>①即时性,不经过服务器的存储,直接通过HTTP的GET和POST就能完成一次攻击,拿到用户的隐私数据</p><p>②攻击者需要诱骗点击,必须通过用户点击连接才能发起</p><p>③反馈率低,所以较难发现和响应修复</p><p>*如何防御</p><p>①Web页面渲染的所有内容或者显然的数据都必须来自服务端</p><p>②尽量不要从<code>URL</code>,<code>document.referrer</code>,<code>document.forms</code>,等这种DOM API中获取数据直接渲染</p><p>③尽量不要使用<code>eval</code>, <code>new Function</code>,<code>document.write()</code>,<code>window.setTimeOut</code>,<code>innerHTML</code>等可执行字符串的方法</p><p>③如果做不到以上几点,也必须对涉及DOM渲染的方法传入的字符串参数惊醒escape转义</p><p>④前端渲染的时候对任何字段都需要做escape转义</p></li><li><p>存储型的XSS(持久型)</p><p>持久型的XSS一般存在于form表单提交等交互功能.攻击者利用xss漏洞,将内容通过正常提交功能写入数据库持久保存,当前端页面从数据库中读取数据渲染时,就会执行恶意代码.</p><p>持久型的XSS脚本攻击需要同时满足以下几个条件:</p><p>①post请求提交代码后端没有做转义,过滤直接存入数据库</p><p>②后端从数据库取出数据没做转义直接输出给前端</p><p>③前端拿到数据没有做转义直接渲染</p><p>持久型的XSS攻击的特点:将恶意代码存入数据库,具有持久性/盗取用户的私密信息/危害面广</p><p>*如何防御</p><p>①CSP(内容安全策略),质上就是建立白名单.开发者明确告诉浏览器哪些外部资源可以加载和执行。我们只需要配置规则，如何拦截是由浏览器自己实现的。我们可以通过这种方式来尽量减少 XSS 攻击。</p><p>通常通过两种方式开启CSP:</p><p>(1)设置http header中的Content-Security-Police.例如:</p><p>只允许加载本站资源 <code>Content-Security-Police: default-src &#39;self&#39;</code></p><p>只允许加载https协议的图片 <code>Content-Security-Police: img-src https://*</code></p><p>对于这种方式来说,只要开发者配置了正确的规则,那么即使网站存在漏洞,攻击者也不能他的攻击代码.</p><p>(2)设置meta标签</p><p>②转义字符</p><p>对于用户的输入永远是不可信任的.最普遍的做法就是转义输入输出的内容,对引号/尖括号/斜杠进行转义.</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">escape</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    str = str.replace(<span class="regexp">/&amp;/g</span>, <span class="string">&#x27;&amp;amp;&#x27;</span>);</span><br><span class="line">    str = str.replace(<span class="regexp">/&lt;/g</span>, <span class="string">&#x27;&amp;lt;&#x27;</span>);</span><br><span class="line">    str = str.replace(<span class="regexp">/&gt;/g</span>, <span class="string">&#x27;&amp;gt;&#x27;</span>);</span><br><span class="line">    str = str.replace(<span class="regexp">/&quot;/g</span>, <span class="string">&#x27;&amp;quto;&#x27;</span>);</span><br><span class="line">    str = str.replace(<span class="regexp">/&#x27;/g</span>, <span class="string">&#x27;&amp;#39;&#x27;</span>);</span><br><span class="line">    str = str.replace(<span class="regexp">/`/g</span>, <span class="string">&#x27;&amp;#96;&#x27;</span>);</span><br><span class="line">    str = str.replace(<span class="regexp">/\//g</span>, <span class="string">&#x27;&amp;#x2F;&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但是对于显示富文本来说,显然不能通过上面的方法来转义所有字符,因为这样会把需要的格式也过滤掉.这种情况通常通过白名单过滤的方式.</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const xss = require(&#x27;xss&#x27;);</span><br><span class="line">let html = xss(&#x27;<span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;xx&quot;</span>&gt;</span>XSS DEMO<span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="string">&quot;xss&quot;</span>);</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>&#x27;);</span><br><span class="line">console.log(html);</span><br><span class="line">// -&gt;<span class="tag">&lt;<span class="name">h1</span>&gt;</span>XSS Demo<span class="tag">&lt;/<span class="name">h1</span>&gt;</span><span class="symbol">&amp;lt;</span>script<span class="symbol">&amp;gt;</span>alert(&quot;xss&quot;);<span class="symbol">&amp;lt;</span>/script<span class="symbol">&amp;gt;</span></span><br></pre></td></tr></table></figure><p>该示例使用js-xss来实现XSS防御,可以看到h1标签呗保留,但script标签被转义.</p><p>③HttpOnly Cookie</p><p>这是防御XSS攻击窃取用户cookie最有效的方式,web用用程序在设置cookie时将其属性设置为HttpOnly.</p></li></ul><p>3.CSRF</p><ul><li><p>是什么:跨站请求伪造,他利用户的登录身份,子啊用户不知情的情况下,以用户的名义完成非法操作.</p></li><li><p>CSRF攻击的必要条件:</p><p>①用户登录长点A,并在本地存储cookie信息</p><p>②在用户没有登出站带你A的情况下,访问恶意攻击者提供的危险站点B</p><p>③站点A没有做防御措施</p></li><li><p>例子:用户登录转账界面,弹出诱惑性信息,用户点击危险网站连接,当危险网站连接加载时执行某一个请求,从而将用户的10块钱转入黑客账户.</p></li><li><p>*如何防御</p><p>防范CSRF攻击可以遵循以下准则:</p><p>①GET请求不对数据进行修改</p><p>②不让第三方网站访问到本地cookie</p><p>③阻止第三方网站请求接口</p><p>④请求时附带校验信息,比如验证码,token</p><p>防御手段:</p><p>①SameSite:可以对cookie设置SameSite属性.该属性表示cookie不随着跨站请求发送,可以很大程度减少CSRF,但该属性不是所有浏览器都兼容</p><p>②Referer Check: HTTP Referer时header的一部分,当浏览器向服务器发起请求时,一般会带上referer信息告诉服务器请求是从哪个连接发出.服务器可以通过该信息来防御CSRF.</p><p>③Anti-CSRF-Token:该方案是目前比较完善的解决方案.即发送请求时在http请求中以参数的形式加入一个随机产生的token,并在服务器建立拦截器来验证token.服务器读取浏览器当前域cookie中的这个值,会进行校验该请求中的token中的token是否都存在且相等,才认为时合法请求.</p><p>④验证码:应用程序和用户交互的过程中,特别是账户交易这种核心处理,强制用户输入验证码,才能最终完成请求.   </p><p>4.点击劫持</p><ul><li><p>是什么:点击劫持是一种视觉欺骗的攻击手段.攻击者将需要攻击的网站通过iframe嵌入自己的网页中,并将iframe设置为透明,在页面中透出一个按钮有道用户点击.</p></li><li><p>特点</p><p>隐蔽性高,骗取用户操作</p><p>需要利用iframe或者其他标签的属性  </p></li><li><p>点击劫持的原理</p><p>用户登录A网站后,被攻击者被诱导打开第三方网站,而第三方网站通过iframe引入A网站页面的内容,用户在第三方网站中点击A网站的按钮. </p></li><li><p>*如何防御</p><p>①X-FRAME-OPTIONS:是HTTP响应头 ,在现代浏览器中有较好的支持.该选项有三个值:</p><p>​    deny:页面不允许通过iframe的形式展示</p><p>​    sameorigin:页面可以在相同域名下通过iframe嵌套</p><p>​    allow-from:页面可以在指定来源的iframe中展示</p><p>②js防御</p><p>对于一些比较老旧的浏览器来说,并不支持X-Frame-OPTION选项,那么只能通过JS的方式来防御点击劫持.原理:当通过iframe的方式加载页面时,攻击的网页直接不显示所有内容.</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span> <span class="attr">id</span>=<span class="string">&quot;click-jack&quot;</span>&gt;</span></span><br><span class="line">    html &#123;</span><br><span class="line">      display: none !important;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (self == top) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> style = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;click-jack&#x27;</span>)</span></span><br><span class="line"><span class="javascript">      <span class="built_in">document</span>.body.removeChild(style)</span></span><br><span class="line"><span class="javascript">    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line">      top.location = self.location</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul><p>5.URL跳转漏洞</p><ul><li><p>是什么:借助未验证的URL跳转,将应用程序引导到不安全的第三方区域,从而导致安全问题.</p></li><li><p>原理:攻击者构造恶意链接(连接需要伪装,尽可能迷惑),发在QQ群或者时浏览量比较多的贴吧/论坛中,安全意识比较低的用户点击后,经过服务器或者浏览器解析后,跳转到恶意网站.</p></li><li><p>如何防御:</p><p>①referer的限制</p><p>②加入有效性验证token  </p></li></ul></li></ul><p> 6.SQL注入</p><p> 7.OS命令注入攻击</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;1.Web安全分类&lt;/p&gt;
+&lt;p&gt;XSS（Cross Site Scripting,跨站脚本攻击），CSRF(Cross Site Request Forgery,跨站请求伪造)，点击劫持， URL跳转漏洞，SQL注入， OS命令注入。&lt;/p&gt;</summary>
     
     
     
     
-    
-    <category term="webpack" scheme="http://example.com/tags/webpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深入学习$nextTick</title>
-    <link href="http://example.com/2021/02/01/nextTick/"/>
-    <id>http://example.com/2021/02/01/nextTick/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-    <category term="vue" scheme="http://example.com/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Node.js学习积累</title>
-    <link href="http://example.com/2021/02/01/node%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
-    <id>http://example.com/2021/02/01/node%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-    <category term="node" scheme="http://example.com/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js的数据类型，null和u年底fined却别</title>
-    <link href="http://example.com/2021/02/01/null,undefined/"/>
-    <id>http://example.com/2021/02/01/null,undefined/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-    <category term="js" scheme="http://example.com/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>写写我对Promise的理解</title>
-    <link href="http://example.com/2021/02/01/promise/"/>
-    <id>http://example.com/2021/02/01/promise/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.什么是Promise?</p><a id="more"></a><p>2.Promise的特点</p><p>3.</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;1.什么是Promise?&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="js  ES6" scheme="http://example.com/tags/js-ES6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue响应式的原理</title>
-    <link href="http://example.com/2021/02/01/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/"/>
-    <id>http://example.com/2021/02/01/vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/</id>
-    <published>2021-02-01T05:37:27.000Z</published>
-    <updated>2021-02-01T07:41:41.247Z</updated>
-    
-    
-    
-    
-    
-    <category term="Vue.js" scheme="http://example.com/tags/Vue-js/"/>
+    <category term="web安全" scheme="http://example.com/tags/web%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   

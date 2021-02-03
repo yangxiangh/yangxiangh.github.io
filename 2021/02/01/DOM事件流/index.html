@@ -8,18 +8,20 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>DOM事件流 | xh小站长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.什么事件流  js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。  2.事件冒泡 3.事件捕获 4.事件流">
+  <meta name="description" content="1.什么事件流  js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。  事件发生时会在元素节点和根节点直接按照特定顺序传播，路径经过的所有节点都会收到该事件，这个传播过程就叫做DOM事件流。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DOM事件流">
 <meta property="og:url" content="http://example.com/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/index.html">
 <meta property="og:site_name" content="xh小站长">
-<meta property="og:description" content="1.什么事件流  js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。  2.事件冒泡 3.事件捕获 4.事件流">
+<meta property="og:description" content="1.什么事件流  js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。  事件发生时会在元素节点和根节点直接按照特定顺序传播，路径经过的所有节点都会收到该事件，这个传播过程就叫做DOM事件流。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/1.png">
 <meta property="article:published_time" content="2021-02-01T05:37:27.000Z">
-<meta property="article:modified_time" content="2021-02-01T10:50:50.825Z">
+<meta property="article:modified_time" content="2021-02-03T03:27:04.008Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="技术记录">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/1.png">
   
     <link rel="alternative" href="/atom.xml" title="xh小站长" type="application/atom+xml">
   
@@ -67,7 +69,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 35
+			总文章数 5
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -188,9 +190,37 @@
 <blockquote>
 <p>js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。</p>
 </blockquote>
-<p>2.事件冒泡</p>
-<p>3.事件捕获</p>
-<p>4.事件流</p>
+<p>事件发生时会在元素节点和根节点直接按照特定顺序传播，路径经过的所有节点都会收到该事件，这个传播过程就叫做DOM事件流。</p>
+<a id="more"></a>
+
+<p>2.事件流的分类</p>
+<p>（1）冒泡型的事件流（任何浏览器都支持）</p>
+<p>事件传播的顺序时从最特定的事件目标到最不特定的事件目标。即从DOM树的叶子节点春波到根节点</p>
+<p>div-&gt;body-&gt;html-&gt;document</p>
+<p>（2）捕获型的事件流（IE8以下不支持）</p>
+<p>事件的传播顺序是从最不特定的时间目标到最特定的事件目标。即从根节点传播到叶子节点</p>
+<p>document -&gt;html -&gt; body -&gt;div</p>
+<p>3.DOM事件流</p>
+<img src="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/1.png" class>
+
+<p>DOM标准采用捕获+冒泡。两种事件流都会触发DOM的所有对象。从Document开始到document结束。</p>
+<p>DOM 标准规定事件流包含三个阶段：事件捕获阶段/目标阶段/事件冒泡阶段</p>
+<p>事件捕获阶段：实际目标（div)在捕获阶段不会接收事件。也就是在捕获阶段，事件从Document到html再到body就停止了</p>
+<p>目标阶段：事件在div上发生并处理。但是事件处理会被看成冒泡阶段的一部分</p>
+<p>事件冒泡阶段：事件又被传递回document</p>
+<p><strong>note</strong>:并不是所有的事件都会经过事件冒泡阶段，但是多有事件都会经过事件捕获和目标阶段。例如，获取输入焦点的focus事件和失去焦点blur事件。</p>
+<p>4.事件shi流的典型应用：事件代理</p>
+<p>背景：传统事件处理中，需要为每个元素添加事件处理器，js代理则是一种简单有效的技巧，通过它可以把事件处理器添加到一个父级元素上，从而避免鲍书简处理器添加到多个子级元素上。</p>
+<p>原理：事件代理就是利用事件冒泡和目标元素，把事件处理器添加到父元素上，等待子元素事件冒泡，并且父元素能够通过target（IE为srcElement）判断是哪个子元素，从而做相应的处理。</p>
+<p>优点：</p>
+<ul>
+<li>将多个事件处理减少到一个，因为事件处理器要驻留内存，从而提高性能</li>
+<li>DOM更新无需重新绑定事件处理器，因为事件代理对不同子元素可以采用不同的处理方式 </li>
+</ul>
+<p>缺点：例如事件代理中同时绑定li和span，当点击span时，li和span 都会冒泡</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;li&gt;<span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>li内的span<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>&lt;/li&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    $(<span class="built_in">document</span>).on(<span class="string">&#x27;click&#x27;</span>, <span class="string">&#x27;li&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;alert(<span class="string">&#x27;li&#x27;</span>)&#125;);</span><br><span class="line">	$(<span class="built_in">document</span>).on(<span class="string">&#x27;click&#x27;</span>, <span class="string">&#x27;span&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;alert(<span class="string">&#x27;li span&#x27;</span>)&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">方法一：span的事件处理程序中，阻止冒泡</span><br><span class="line">$(<span class="built_in">document</span>).on(<span class="string">&#x27;click&#x27;</span>, <span class="string">&#x27;span&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">&#x27;li span&#x27;</span>);</span><br><span class="line">    e.stopPropagation();</span><br><span class="line">&#125;)</span><br><span class="line">方法二：li的事件处理程序中检测target元素</span><br><span class="line">$(<span class="built_in">document</span>).on(<span class="string">&#x27;click&#x27;</span>,<span class="string">&#x27;li&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(e.target.nodeName === <span class="string">&#x27;span&#x27;</span>)&#123;</span><br><span class="line">		e.stopPropagation();</span><br><span class="line">        rerurn;</span><br><span class="line">    &#125;</span><br><span class="line">    alert(<span class="string">&#x27;li&#x27;</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
       
 
@@ -284,18 +314,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/02/01/BFC/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          浅谈BFC
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/02/01/ES6,7,8%E7%89%B9%E6%80%A7/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ES6, ES7, ES8的新特性</div>
+    <a href="/2021/02/01/BFC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浅谈BFC</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -427,11 +448,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -439,59 +456,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vue.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">cookie</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js  ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">http 缓存</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Node.js</a>
               </li>
             
             <div class="clearfix"></div>
