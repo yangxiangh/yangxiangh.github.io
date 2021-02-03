@@ -7,19 +7,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>浅谈BFC | xh小站长</title>
+  <title>CORS | xh小站长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.什么是BFC? BFC全称块级格式化上下文。他是一个独立渲染区域，规定内部元素如何布局。当涉及可视化布局的时候，BFC提供一个环境，html元素在这个环境中按照规则进行布局。一个环境中的元素不会影响到其他环境的布局。">
+  <meta name="description" content="参考文章：  https:&#x2F;&#x2F;blog.csdn.net&#x2F;lambert310&#x2F;article&#x2F;details&#x2F;51683775  1.什么是跨域？ 跨域指当前浏览器不能执行其他浏览器的脚本。是由浏览器的同源测率造成的。就是浏览器在搞事情。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈BFC">
-<meta property="og:url" content="http://example.com/2021/02/01/BFC/index.html">
+<meta property="og:title" content="CORS">
+<meta property="og:url" content="http://example.com/2021/02/03/CORS/index.html">
 <meta property="og:site_name" content="xh小站长">
-<meta property="og:description" content="1.什么是BFC? BFC全称块级格式化上下文。他是一个独立渲染区域，规定内部元素如何布局。当涉及可视化布局的时候，BFC提供一个环境，html元素在这个环境中按照规则进行布局。一个环境中的元素不会影响到其他环境的布局。">
+<meta property="og:description" content="参考文章：  https:&#x2F;&#x2F;blog.csdn.net&#x2F;lambert310&#x2F;article&#x2F;details&#x2F;51683775  1.什么是跨域？ 跨域指当前浏览器不能执行其他浏览器的脚本。是由浏览器的同源测率造成的。就是浏览器在搞事情。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-02-01T05:37:27.000Z">
-<meta property="article:modified_time" content="2021-02-01T07:41:41.247Z">
+<meta property="article:published_time" content="2021-02-03T06:29:39.000Z">
+<meta property="article:modified_time" content="2021-02-03T07:38:51.133Z">
 <meta property="article:author" content="Yangxh">
-<meta property="article:tag" content="HTML CSS">
+<meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="xh小站长" type="application/atom+xml">
@@ -166,52 +166,57 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-BFC" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-CORS" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      浅谈BFC
+      CORS
     </h1>
   
 
         
-        <a href="/2021/02/01/BFC/" class="archive-article-date">
-  	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
+        <a href="/2021/02/03/CORS/" class="archive-article-date">
+  	<time datetime="2021-02-03T06:29:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.什么是BFC?</p>
-<p>BFC全称<strong>块级格式化上下文</strong>。他是一个独立渲染区域，规定内部元素如何布局。当涉及可视化布局的时候，BFC提供一个环境，html元素在这个环境中按照规则进行布局。一个环境中的元素不会影响到其他环境的布局。</p>
+        <blockquote>
+<p>参考文章：  <a target="_blank" rel="noopener" href="https://blog.csdn.net/lambert310/article/details/51683775">https://blog.csdn.net/lambert310/article/details/51683775</a></p>
+</blockquote>
+<p>1.什么是跨域？</p>
+<p>跨域指当前浏览器不能执行其他浏览器的脚本。是由浏览器的同源测率造成的。就是浏览器在搞事情。</p>
 <a id="more"></a>
 
-<p>2.触发BFC的条件</p>
+<p>2.什么情况下会造成跨域问题？</p>
+<p>不同源的情况下。那么什么是同源。就是指<strong>协议，域名（包括子域名和主域名），端口都相同</strong>。 </p>
+<p>3.如何解决跨域</p>
 <ul>
-<li>根元素（html)</li>
-<li>浮动的元素（float不为none）</li>
-<li>position为absolute或fixed</li>
-<li>display的值为inlin-block,table-cell,flex,table-caption,inlin-flex</li>
-<li>overflow的值不是visible</li>
-<li>计算BFC高度时，考虑BFC包含的所有元素，浮动元素也要计算在内</li>
-</ul>
-<p>3.BFC的布局规则</p>
-<ul>
-<li>内部的盒子，会在垂直方向上一个节一个排列</li>
-<li>盒子垂直方向的距离由margin决定。属于同一个BFC的两个相邻的盒子的margin会发生重叠</li>
-<li>每个盒子（包括块盒和行盒）的margin box的左边，与包含border box的左边想接触。即使浮动也是如此</li>
-<li>BFC的区域不会与float box 重叠</li>
-<li>BFC就是页面上的一个独立的容器，容器内的子元素不会收到外面元素的应影响</li>
-</ul>
-<p>4.BFC可以解决什么问题</p>
-<ul>
-<li>垂直外边距重叠问题</li>
-<li>消除浮动产生的影响</li>
-<li>自适应两栏布局</li>
+<li><p>JSONP</p>
+<p>参考我之前的文章*  <a target="_blank" rel="noopener" href="https://yangxiangh.github.io/2021/02/01/JSONP/">https://yangxiangh.github.io/2021/02/01/JSONP/</a>*</p>
+<p><strong>注意</strong>：JSONP只支持GET请求方式</p>
+</li>
+<li><p>代理</p>
+<p>用nginx作为代理服务器和用户交互。这样用户就只需要在80端口上交互就可以了，避免了跨域问题。</p>
+<p>nginx实现跨域的原理:把web端项目和后端项目放在一个域中，就不存在跨域问题了， 然后根据请求地址区请求不同的服务器。</p>
+</li>
+<li><p>CORS</p>
+<p>是什么？跨域资源共享，允许浏览器向跨域服务器发起XMLHttpRequest请求，从而克服跨域问题，他需要浏览器和服务器的同时支持。</p>
+<p>CORS有两种请求方式：简单请求和非简单请求</p>
+<p>1）简单请求</p>
+<p>需要同时满足两个条件：</p>
+<p>（1）请求方式必须是以下三种：head/get/post</p>
+<p>（2）HTTP请求头信息不超出以下五个字段：</p>
+<p>Accept/Accept-Language/Content-Language/Last-Event-ID/Content-Type(仅限于application/x-www-form-urlencoded、multipart/form-data、text/plain)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//后端</span></span><br><span class="line"><span class="keyword">import</span> successBosy form <span class="string">&#x27;xxx&#x27;</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">corssDomain</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> cors (ctx) &#123;</span><br><span class="line">		<span class="keyword">const</span> query =  ctx.request.query;</span><br><span class="line">         <span class="comment">// *时cookie不会在http请求中带上</span></span><br><span class="line">        ctx.set(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">    	ctx.cookies.set(<span class="string">&#x27;tokenId&#x27;</span>, <span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">    	ctx.body = successBody(&#123;<span class="attr">msg</span>: query.msg&#125;, <span class="string">&#x27;success&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//前端</span></span><br><span class="line"><span class="comment">//前端正常发送请即可，如果需要携带cookie，那么需要前后端同时设置一下</span></span><br></pre></td></tr></table></figure>
+<p>2）非简单请求</p>
+<p>非简单请求回先发送一次预检测请求，返回204，预检测通过才会真正发出请求</p>
+</li>
 </ul>
 
       
@@ -247,7 +252,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HTML CSS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
 		</ul>
@@ -303,7 +308,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/01/BFC/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/03/CORS/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -317,18 +322,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/02/03/browsercatch/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          左侧固定，右侧自适应布局
+          浏览器的缓存机制
         
       </div>
     </a>
   
   
-    <a href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">DOM事件流</div>
+    <a href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">左侧固定，右侧自适应布局</div>
       <i class="icon-circle-right"></i>
     </a>
   

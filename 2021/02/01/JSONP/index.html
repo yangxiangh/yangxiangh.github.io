@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/02/01/JSONP/1.png">
 <meta property="article:published_time" content="2021-02-01T05:37:27.000Z">
-<meta property="article:modified_time" content="2021-02-03T03:30:34.540Z">
+<meta property="article:modified_time" content="2021-02-03T07:21:31.227Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="JSONP 腾讯API">
 <meta name="twitter:card" content="summary">
@@ -40,6 +41,7 @@
   
 
 <meta name="generator" content="Hexo 5.3.0"></head>
+
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -69,7 +71,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 5
+			总文章数 9
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -206,7 +208,13 @@
 <p>2.JSONP的原理</p>
 <p>ajax请求受同源策略的影响，不允许进行跨站请求。而script标签的src属性中的连接却可以访问跨域的js脚本。利用这个特性，服务端不在返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行调用，这样实现了跨域。</p>
 <p>3.JSONP的具体实现</p>
+<p>Web端事先定义一个用于获取跨域响应数据的回调函数，并通过没有同源策略的script标签发起请求（将回调函数的名称放在请求参数中），然后服务器端返回这个回调函数的执行，并将需要的数据放到回调函数的参数里，前端的script标签请求到这个回调函数后会立即执行，于是就拿到了执行的响应数据。</p>
 <p>未完待续…</p>
+<p>4.JSONP的安全性问题</p>
+<ul>
+<li>CSRF攻击</li>
+<li>XSS漏洞</li>
+</ul>
 </li>
 </ul>
 
@@ -313,18 +321,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/02/01/github-hexo/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          github+hexo
+          DOM事件流
         
       </div>
     </a>
   
   
-    <a href="/2021/02/01/web%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">web安全问题总结</div>
+    <a href="/2021/02/01/github-hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">github+hexo</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -456,7 +464,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -464,7 +472,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">前端优化</a>
               </li>
             
             <div class="clearfix"></div>
@@ -622,4 +638,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 </div>
   </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="/clipboard_use.js"></script>
 </html>

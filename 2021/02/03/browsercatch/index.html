@@ -7,19 +7,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>浅谈BFC | xh小站长</title>
+  <title>浏览器的缓存机制 | xh小站长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.什么是BFC? BFC全称块级格式化上下文。他是一个独立渲染区域，规定内部元素如何布局。当涉及可视化布局的时候，BFC提供一个环境，html元素在这个环境中按照规则进行布局。一个环境中的元素不会影响到其他环境的布局。">
+  <meta name="description" content="背景：代码更新完后，浏览器请求的依旧是旧版本的页面。为什么？以及如何解决呢。接下来研究一下浏览器的缓存机制。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈BFC">
-<meta property="og:url" content="http://example.com/2021/02/01/BFC/index.html">
+<meta property="og:title" content="浏览器的缓存机制">
+<meta property="og:url" content="http://example.com/2021/02/03/browsercatch/index.html">
 <meta property="og:site_name" content="xh小站长">
-<meta property="og:description" content="1.什么是BFC? BFC全称块级格式化上下文。他是一个独立渲染区域，规定内部元素如何布局。当涉及可视化布局的时候，BFC提供一个环境，html元素在这个环境中按照规则进行布局。一个环境中的元素不会影响到其他环境的布局。">
+<meta property="og:description" content="背景：代码更新完后，浏览器请求的依旧是旧版本的页面。为什么？以及如何解决呢。接下来研究一下浏览器的缓存机制。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-02-01T05:37:27.000Z">
-<meta property="article:modified_time" content="2021-02-01T07:41:41.247Z">
+<meta property="article:published_time" content="2021-02-03T07:39:45.000Z">
+<meta property="article:modified_time" content="2021-02-03T09:46:47.674Z">
 <meta property="article:author" content="Yangxh">
-<meta property="article:tag" content="HTML CSS">
+<meta property="article:tag" content="技术记录">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="xh小站长" type="application/atom+xml">
@@ -166,53 +166,109 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-BFC" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-browsercatch" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      浅谈BFC
+      浏览器的缓存机制
     </h1>
   
 
         
-        <a href="/2021/02/01/BFC/" class="archive-article-date">
-  	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
+        <a href="/2021/02/03/browsercatch/" class="archive-article-date">
+  	<time datetime="2021-02-03T07:39:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.什么是BFC?</p>
-<p>BFC全称<strong>块级格式化上下文</strong>。他是一个独立渲染区域，规定内部元素如何布局。当涉及可视化布局的时候，BFC提供一个环境，html元素在这个环境中按照规则进行布局。一个环境中的元素不会影响到其他环境的布局。</p>
+        <p>背景：代码更新完后，浏览器请求的依旧是旧版本的页面。为什么？以及如何解决呢。接下来研究一下浏览器的缓存机制。</p>
 <a id="more"></a>
 
-<p>2.触发BFC的条件</p>
+<p>1.什么是浏览器缓存(也就是http缓存)</p>
+<p>浏览器缓存就是把一个已经请求过的Wenb资源copy一份放在浏览器中。缓存会根据请求，保存输入内容的副本。当下一次请求的时候，如果URL相同，浏览器会根据缓存机制决定使用缓存数据还是发起请求。</p>
+<p>2.缓存带来的好处</p>
 <ul>
-<li>根元素（html)</li>
-<li>浮动的元素（float不为none）</li>
-<li>position为absolute或fixed</li>
-<li>display的值为inlin-block,table-cell,flex,table-caption,inlin-flex</li>
-<li>overflow的值不是visible</li>
-<li>计算BFC高度时，考虑BFC包含的所有元素，浮动元素也要计算在内</li>
+<li>减少网络带宽消耗</li>
+<li>减少请求，降低服务器的压力</li>
+<li>减少网络延迟，提升用户体验  </li>
 </ul>
-<p>3.BFC的布局规则</p>
+<p>3.浏览器的缓存机制</p>
+<p>浏览器的缓存规则，是由http协议的header和页面的meta标签决定的。他们分别从<em>新鲜度</em>和<em>校验值</em>两个维度来规定浏览器是否可以直接使用缓存中的副本，还是需要去服务器请求。</p>
 <ul>
-<li>内部的盒子，会在垂直方向上一个节一个排列</li>
-<li>盒子垂直方向的距离由margin决定。属于同一个BFC的两个相邻的盒子的margin会发生重叠</li>
-<li>每个盒子（包括块盒和行盒）的margin box的左边，与包含border box的左边想接触。即使浮动也是如此</li>
-<li>BFC的区域不会与float box 重叠</li>
-<li>BFC就是页面上的一个独立的容器，容器内的子元素不会收到外面元素的应影响</li>
+<li><p>过期机制：指浏览器副本的有效期，浏览器的副本必须满足以下两个条件，浏览器才会认为他是有效的，足够新的</p>
+<p>（1）含有完整的过期时间，并在有效期内</p>
+<p>（2）浏览器使用过这个缓存的副本，并且在一个会话中检查过新鲜度（即服务器的资源是否发生改变）</p>
+<p>满足以上其中一个条件，浏览器就会直接从缓存中读取数据</p>
+</li>
+<li><p>校验值（验证机制）：服务器返回资源的时候， 又是在控制头信息带上这个资源的实体标签Etag(Entity Tag),它可以作为浏览器再次请求过程中的校验标识，如果发现标识不匹配，说明资源已经被修改，或则过期，浏览器需要中心请求资源。 </p>
+</li>
 </ul>
-<p>4.BFC可以解决什么问题</p>
+<p>4.缓存的分类：强制缓存/协商缓存。两类缓存可以同时并存，强缓存的优先级高于协商缓存。</p>
 <ul>
-<li>垂直外边距重叠问题</li>
-<li>消除浮动产生的影响</li>
-<li>自适应两栏布局</li>
+<li><p>强缓存：不向服务器发起请求直接从缓存中读取资源。清缓存可以通过设置http header实现：Expires和catch-Control</p>
+<p>Expires（绝对值）：缓存过期时间，用来指定资源到期时间，是服务器端的具体时间点。Expires是HTTP/1的产物，受限于本地时间，如果修改了本地时间，可能回造成缓存失效。 </p>
+<p>Catch-Control（相对值）：在HTTP/1.1中，catch-control是最重要的规则，余姚用于控制网页缓存。catch-control的值：</p>
+<p><strong>public</strong>:表示所有内容都将被缓存（客户端和代理服务器都缓存）</p>
+<p><strong>private</strong>:值在客户端缓存</p>
+<p><strong>no-catch</strong>:客户端缓存内容，是否使用缓存则需要经过协商缓存来决定。</p>
+<p><strong>no-store</strong>:所有内容都不会缓存</p>
+<p><strong>max-age</strong>: max-age = xxx表示缓存在xxx秒后消失</p>
+<p><strong>s-maxage</strong>：同max-age作用一样。只在代理服务器生效</p>
+</li>
+<li><p>协商缓存：在强制缓存失效后，浏览器携带缓存标识符，向服务器发起请求。由服务器根据级缓存标识符决定是否使用缓存</p>
+</li>
 </ul>
+<p>5.缓存场景</p>
+<ul>
+<li>对于某些不需要缓存的资源，可以使用Cath-Control: no-store</li>
+<li>对于一些频繁变动的资源， 可以使用Catch-Contol:no-catch</li>
+<li>对于补偿变化的资源：Catch-Control: max-age=31536000</li>
+</ul>
+<p>6.用户操作对浏览器缓存的影响</p>
+<table>
+<thead>
+<tr>
+<th>用户操作</th>
+<th>强制缓存</th>
+<th>协商缓存</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>地址栏回车</td>
+<td>有效</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>页面连接跳转</td>
+<td>有效</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>新开窗口</td>
+<td>有效</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>前进回退</td>
+<td>有效</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>F5刷新</td>
+<td>无效</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>ctrl+F5强制刷新</td>
+<td>无效</td>
+<td>无效</td>
+</tr>
+</tbody></table>
 
       
 
@@ -242,17 +298,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HTML CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -303,7 +348,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/01/BFC/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/03/browsercatch/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -317,18 +362,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          左侧固定，右侧自适应布局
+          首屏加载优化方案
         
       </div>
     </a>
   
   
-    <a href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">DOM事件流</div>
+    <a href="/2021/02/03/CORS/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CORS</div>
       <i class="icon-circle-right"></i>
     </a>
   

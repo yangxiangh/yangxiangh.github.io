@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +38,7 @@
 
 <meta name="generator" content="Hexo 5.3.0"></head>
 
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -65,7 +67,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 5
+			总文章数 9
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -164,33 +166,105 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-DOM事件流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-首屏加载优化方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/">DOM事件流</a>
+      <a class="article-title" href="/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/">首屏加载优化方案</a>
     </h1>
   
 
         
-        <a href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/" class="archive-article-date">
-  	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
+        <a href="/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" class="archive-article-date">
+  	<time datetime="2021-02-03T10:01:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.什么事件流</p>
-<blockquote>
-<p>js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。</p>
-</blockquote>
-<p>事件发生时会在元素节点和根节点直接按照特定顺序传播，路径经过的所有节点都会收到该事件，这个传播过程就叫做DOM事件流。</p>
+        <p>背景：随着单页面应用越来越大，导致首屏加载速度慢。</p>
         
-          <a class="article-more-a" href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/#more">more >></a>
+          <a class="article-more-a" href="/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">前端优化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-browsercatch" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/03/browsercatch/">浏览器的缓存机制</a>
+    </h1>
+  
+
+        
+        <a href="/2021/02/03/browsercatch/" class="archive-article-date">
+  	<time datetime="2021-02-03T07:39:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>背景：代码更新完后，浏览器请求的依旧是旧版本的页面。为什么？以及如何解决呢。接下来研究一下浏览器的缓存机制。</p>
+        
+          <a class="article-more-a" href="/2021/02/03/browsercatch/#more">more >></a>
         
       
 
@@ -203,7 +277,163 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/02/03/browsercatch/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-CORS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/03/CORS/">CORS</a>
+    </h1>
+  
+
+        
+        <a href="/2021/02/03/CORS/" class="archive-article-date">
+  	<time datetime="2021-02-03T06:29:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>参考文章：  <a target="_blank" rel="noopener" href="https://blog.csdn.net/lambert310/article/details/51683775">https://blog.csdn.net/lambert310/article/details/51683775</a></p>
+</blockquote>
+<p>1.什么是跨域？</p>
+<p>跨域指当前浏览器不能执行其他浏览器的脚本。是由浏览器的同源测率造成的。就是浏览器在搞事情。</p>
+        
+          <a class="article-more-a" href="/2021/02/03/CORS/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/02/03/CORS/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-左侧固定，右侧自适应布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/">左侧固定，右侧自适应布局</a>
+    </h1>
+  
+
+        
+        <a href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/" class="archive-article-date">
+  	<time datetime="2021-02-03T05:31:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天来总结以下，左侧宽度固定，右侧自使用的几种实现方式。效果图：</p>
+        
+          <a class="article-more-a" href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HTML CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/">展开全文 >></a>
         </p>
       
 
@@ -310,19 +540,19 @@
 
 
   
-    <article id="post-github-hexo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-DOM事件流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/01/github-hexo/">github+hexo</a>
+      <a class="article-title" href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/">DOM事件流</a>
     </h1>
   
 
         
-        <a href="/2021/02/01/github-hexo/" class="archive-article-date">
+        <a href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/" class="archive-article-date">
   	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
 </a>
         
@@ -330,12 +560,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>记录搭建git博客的过程</p>
-<ul>
-<li><p>准备工作</p>
-<p>github账号,安装Node.js/npm/git</p></li></ul>
+        <p>1.什么事件流</p>
+<blockquote>
+<p>js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。</p>
+</blockquote>
+<p>事件发生时会在元素节点和根节点直接按照特定顺序传播，路径经过的所有节点都会收到该事件，这个传播过程就叫做DOM事件流。</p>
         
-          <a class="article-more-a" href="/2021/02/01/github-hexo/#more">more >></a>
+          <a class="article-more-a" href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/#more">more >></a>
         
       
 
@@ -344,22 +575,11 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/01/github-hexo/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/">展开全文 >></a>
         </p>
       
 
@@ -439,6 +659,85 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/02/01/JSONP/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-github-hexo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/01/github-hexo/">github+hexo</a>
+    </h1>
+  
+
+        
+        <a href="/2021/02/01/github-hexo/" class="archive-article-date">
+  	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录搭建git博客的过程</p>
+<ul>
+<li><p>准备工作</p>
+<p>github账号,安装Node.js/npm/git</p></li></ul>
+        
+          <a class="article-more-a" href="/2021/02/01/github-hexo/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客搭建</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/02/01/github-hexo/">展开全文 >></a>
         </p>
       
 
@@ -644,7 +943,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
+                <a href="javascript:void(0)" class="js-tag color3">JS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,7 +951,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">前端优化</a>
               </li>
             
             <div class="clearfix"></div>
@@ -810,4 +1117,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 </div>
   </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="/clipboard_use.js"></script>
 </html>
