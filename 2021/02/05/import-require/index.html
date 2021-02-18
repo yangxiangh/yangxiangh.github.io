@@ -7,22 +7,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>左侧固定，右侧自适应布局 | xh小站长</title>
+  <title>import &amp; require | xh小站长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天来总结以下，左侧宽度固定，右侧自使用的几种实现方式。效果图：">
+  <meta name="description" content="今天来总结以下import和require的区别，以及使用方法。 import和require都是为了模块化而生。但是他们是不同模块化规范的产物。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="左侧固定，右侧自适应布局">
-<meta property="og:url" content="http://example.com/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:title" content="import &amp; require">
+<meta property="og:url" content="http://example.com/2021/02/05/import-require/index.html">
 <meta property="og:site_name" content="xh小站长">
-<meta property="og:description" content="今天来总结以下，左侧宽度固定，右侧自使用的几种实现方式。效果图：">
+<meta property="og:description" content="今天来总结以下import和require的区别，以及使用方法。 import和require都是为了模块化而生。但是他们是不同模块化规范的产物。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/1.png">
-<meta property="article:published_time" content="2021-02-03T05:31:15.000Z">
-<meta property="article:modified_time" content="2021-02-03T06:02:04.542Z">
+<meta property="article:published_time" content="2021-02-05T08:05:09.000Z">
+<meta property="article:modified_time" content="2021-02-05T09:55:30.722Z">
 <meta property="article:author" content="Yangxh">
-<meta property="article:tag" content="HTML CSS">
+<meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/1.png">
   
     <link rel="alternative" href="/atom.xml" title="xh小站长" type="application/atom+xml">
   
@@ -168,41 +166,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-左侧固定，右侧自适应布局" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-import-require" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      左侧固定，右侧自适应布局
+      import &amp; require
     </h1>
   
 
         
-        <a href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/" class="archive-article-date">
-  	<time datetime="2021-02-03T05:31:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
+        <a href="/2021/02/05/import-require/" class="archive-article-date">
+  	<time datetime="2021-02-05T08:05:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天来总结以下，左侧宽度固定，右侧自使用的几种实现方式。效果图：</p>
+        <p>今天来总结以下import和require的区别，以及使用方法。</p>
+<p>import和require都是为了模块化而生。但是他们是不同模块化规范的产物。</p>
 <a id="more"></a>
 
-<img src="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/1.png" class>
-
-<p>DOM结构</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;contianer&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;leftbox&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;rightbox&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>1.<strong>float+margin</strong>实现</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.contianer</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.leftbox</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">231</span>, <span class="number">82</span>, <span class="number">82</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.rightbox</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">113</span>, <span class="number">221</span>, <span class="number">113</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2.利用<strong>calc</strong>计算宽度</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.rightbox</span> &#123;</span><br><span class="line">     <span class="attribute">width</span>: <span class="built_in">calc</span>(<span class="number">100%</span> - <span class="number">200px</span>);</span><br><span class="line">     <span class="attribute">float</span>: left;</span><br><span class="line">     <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">113</span>, <span class="number">221</span>, <span class="number">113</span>);</span><br><span class="line"> &#125; </span><br></pre></td></tr></table></figure>
-<p>3.<strong>float+overflow</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.rightbox</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">113</span>, <span class="number">221</span>, <span class="number">113</span>);</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<p>4.<strong>flex</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.contianer</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.contianer</span> &gt; <span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.leftbox</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">223</span>, <span class="number">72</span>, <span class="number">72</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.rightbox</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">48</span>, <span class="number">177</span>, <span class="number">36</span>);</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.CommonJS的模块化方案require/exports是为服务器端开发设计的。服务器模块系统<strong>同步读取模块文件内容</strong>，编译执行后得到模块接口。（Node.js就是CommonJs规范实现的）</p>
+<p>再浏览器端， 因为其<strong>异步加载脚本文件</strong>的特性，CommonJS规范无法直接加载，所以出现了RequireJS/SeaJS等，为浏览器设计的方案</p>
+<p>需要注意：</p>
+<ul>
+<li><strong>原生浏览器不支持require/exports</strong>,可使用支持CommonJS模块规范的webpack打包工具，将require/exports 转换成能在浏览器使用的代码。</li>
+<li><strong>import/export在浏览器中无法直接使用</strong>，我们需要在引入模块的<code>&lt;script&gt;</code>元素上添加type=”module”属性。</li>
+</ul>
+<p>2.<strong>require/exports是运行时加载，import/export是静态编译</strong></p>
+<blockquote>
+<p>CommonJS 加载的是一个对象（即 module.exports 属性），该对象只有在脚本运行完才会生成。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。- 阮一峰</p>
+</blockquote>
+<p>3.<strong>require/exports输出的是一个值的拷贝，import/export输出的是值的引用</strong></p>
+<ul>
+<li>require/exports输出的是一个值的拷贝，也就是说，一个值一旦输出，模块内部的变化就不会影响到这个值</li>
+<li>import/export输出的是值的引用。js引擎对脚本进行静态分析的时候，遇到模块加载命令import，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。</li>
+<li>若文件引用的模块值改变，require 引入的模块值不会改变，而 import 引入的模块值会改变</li>
+</ul>
+<p>4.<em>用法不一致</em></p>
+<ul>
+<li><p>require/exports的用法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="built_in">exports</span>.fs = fs; </span><br><span class="line">moudule.exports =fs;</span><br></pre></td></tr></table></figure>
+<p>exports是对moudle.exports的引用，相当于<code>exports = moudle.exports =&#123;&#125;;</code>,在不改变exports指向的情况下，使用exports和module.exports没有区别；如果exports指向了其他对象，exports改变不会改变模块输出值。例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">utils.js</span><br><span class="line"><span class="keyword">let</span> a = <span class="number">100</span>;</span><br><span class="line"><span class="built_in">exports</span>.a =<span class="number">200</span>;</span><br><span class="line"><span class="built_in">console</span>.log(moudle.exports);<span class="comment">//&#123;a:200&#125;</span></span><br><span class="line"><span class="built_in">exports</span> = &#123;<span class="attr">a</span>:<span class="number">300</span>&#125;; <span class="comment">//指向其他内存区</span></span><br><span class="line"><span class="comment">//test.js</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="built_in">require</span>(<span class="string">&#x27;./utils&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//&#123;a:200&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>import/export的用法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;readFile&#125; <span class="keyword">from</span> <span class="string">&#x27;fs&#x27;</span>;<span class="comment">//从fs导入readfile模块</span></span><br><span class="line"><span class="keyword">import</span> &#123;<span class="keyword">default</span> <span class="keyword">as</span> fs&#125; <span class="keyword">from</span> <span class="string">&#x27;fs&#x27;</span>;<span class="comment">//从 fs 中导入使用 export default 导出的模块</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fileSystem <span class="keyword">from</span> <span class="string">&#x27;fs&#x27;</span> <span class="comment">//从 fs 导入所有模块，引用对象名为 fileSystem</span></span><br><span class="line"><span class="keyword">import</span> &#123;readFile <span class="keyword">as</span> read&#125; <span class="keyword">from</span> <span class="string">&#x27;fs&#x27;</span> <span class="comment">//从 fs 导入 readFile 模块，引用对象名为 read</span></span><br><span class="line"><span class="keyword">import</span>(<span class="string">&#x27;/modules/my-module.js&#x27;</span>) <span class="comment">//动态导入</span></span><br><span class="line">  .then(<span class="function">(<span class="params"><span class="built_in">module</span></span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Do something with the module.</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> fs</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> fs</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">readFile</span></span></span><br><span class="line"><span class="function"><span class="title">export</span> </span>&#123;readFile, read&#125;</span><br><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">&#x27;fs&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：</p>
+<p>1.引入export default导出的模块不用加{}， 引入非exportdefault导出的模块需要加{}</p>
+<p>2.一个文件只能导出一个default模块</p>
+<p>3.在验证代码时遇到以下错误</p>
+<p><code>access to script from origin &#39;null&#39; has been blocked by CORS policy</code></p>
+<p><strong>原因</strong>：浏览器引入模块的<code>&lt;script&gt;</code>标签要加`type=”module”属性，但是<strong>module不支持file://文件协议，只支持HTTP协议</strong>。所以本地需要使用http-server等本地网络服务器打开网页。 </p>
+</li>
+<li><p>** import/export不能对引入的模块重新赋值**</p>
+</li>
+<li><p><strong>ES6模块可以在import引用语句前使用模块，CommonJS则需要先引用后使用</strong></p>
+</li>
+</ul>
 
       
 
@@ -237,7 +261,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HTML CSS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		
 		</ul>
@@ -293,7 +317,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/05/import-require/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -307,18 +331,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/02/03/CORS/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CORS
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/02/01/BFC/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">浅谈BFC</div>
+    <a href="/2021/02/04/sse/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SSE：使用HTTP做服务端数据推送的技术及其他通信技术</div>
       <i class="icon-circle-right"></i>
     </a>
   

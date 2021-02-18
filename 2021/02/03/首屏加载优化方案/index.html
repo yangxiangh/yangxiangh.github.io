@@ -16,11 +16,13 @@
 <meta property="og:site_name" content="xh小站长">
 <meta property="og:description" content="背景：随着单页面应用越来越大，导致首屏加载速度慢。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/1.png">
 <meta property="article:published_time" content="2021-02-03T10:01:51.000Z">
-<meta property="article:modified_time" content="2021-02-03T10:14:06.672Z">
+<meta property="article:modified_time" content="2021-02-05T08:02:53.318Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="前端优化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/1.png">
   
     <link rel="alternative" href="/atom.xml" title="xh小站长" type="application/atom+xml">
   
@@ -69,7 +71,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 10
+			总文章数 11
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -193,9 +195,57 @@
 <p>白屏时间指浏览器从响应用户输入网址，到浏览器开始显示内容的时间。</p>
 <p>首屏时间是指浏览器从响应用户输入网址，到首屏内容渲染完成的时间。注意，此时整个页面不一定全部渲染完成，但是当前视口内容渲染完毕。</p>
 <p><em>白屏时间是首屏时间的子集</em></p>
-<p>2.如何优化首屏加载时间</p>
+<p>2.为什么首屏会白屏</p>
+<p>3.如何优化首屏加载时间</p>
 <ul>
-<li>使用CDN资源，减少服务器带宽压力</li>
+<li><p>cdn分发（减少传输距离）。通过在多台服务器部署相同的副本，当用户访问时，服务器根据用户跟哪台服务器距离近，来决定哪台服务器去响应这个请求。</p>
+</li>
+<li><p>后端在业务层的缓存。数据库查询缓存是可以设置缓存的，这个对于处于高频率的请求很有用。浏览器一般不会对<code>content-type: application/json</code>；的接口进行缓存，所以有时需要我们手动地为接口设置缓存。比如一个用户的签到状态，它的缓存时间可以设置到明天之前。</p>
+</li>
+<li><p>静态文件缓存方案。这个最常看到。现在流行的方式是文件hash+强缓存的一个方案。比如hash+ cache control: max-age=1年。</p>
+</li>
+<li><p>前端的资源动态加载：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a. 路由动态加载，最常用的做法，以页面为单位，进行动态加载。</span><br><span class="line">b. 组件动态加载(offScreen Component)，对于不在当前视窗的组件，先不加载。</span><br><span class="line">c. 图片懒加载(offScreen Image)，同上。值得庆幸的是，越来越多的浏览器支持原生的懒加载，通过给img标签加上loading=&quot;lazy&quot;来开启懒加载模式。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>减少请求的数量。这点在http1.1的优势很明显，因为http1.1的请求是串行的（尽管有多个tcp通道），每个请求都需要往返后才能继续下个请求。此时合并请求可以减少在路途上浪费的时间，此外还会带来重复的请求头部信息（比如cookie)。在http2.0中这个问题会弱化很多，但也有做的必要。</p>
+</li>
+<li><p>页面使用骨架屏。意思是在首屏加载完成之前，通过渲染一些简单元素进行占位。骨架屏的好处在于可以减少用户等待时的急躁情绪。这点很有效，在很多成熟的网站（京东、淘宝、Youtube）都有大量应用。没有骨架屏的话，一个loading的菊花图也是可以的。</p>
+</li>
+<li><p> 使用ssr渲染</p>
+</li>
+<li><p>引入<a href="https://link.zhihu.com/?target=https://www.digitalocean.com/community/tutorials/http-1-1-vs-http-2-what-s-the-difference">http2.0</a>。http2.0对比http1.1，最主要的提升是传输性能，在接口小而多的时候会更加明显。</p>
+</li>
+<li><p> 利用好http压缩。即使是最普通的gzip，也能把<code>bootstrap.min.css</code>压缩到原来的17%。可见，压缩的效果非常明显，特别是对于文本类的静态资源。另外，接口也是能压缩的。接口不大的话不用压缩，因为性价比低（考虑压缩和解压的时间）。</p>
+</li>
+</ul>
+<p>4.针对vue项目做的一些优化</p>
+<p>背景：使用vue-cli4，选择vue-router,vuex;ui框架选用element-ui;ajax选用axios</p>
+<ul>
+<li><p>使用cdn资源</p>
+<p>在vue.config.js中添加添加如下配置，将一些比较大的第三方库不打包到bundle中，而是使用CDN上的资源</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">configureWebpack: &#123;</span><br><span class="line">	externals:&#123;</span><br><span class="line">        vue:<span class="string">&quot;Vue&quot;</span>,</span><br><span class="line">        element-ui:<span class="string">&quot;ELEMENT&quot;</span>,</span><br><span class="line">        vue-router:<span class="string">&#x27;VueRouter&#x27;</span>,</span><br><span class="line">        vuex:<span class="string">&quot;VueX&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们排除了vue,element-ui,vue-router,vuex。这里我们排除了vue,element-ui, vue-router和vuex。以打包忽略elemen-ui为例,”element-ui” 指的是你import语句中import ElementUI from ‘element-ui’中的’element-ui’, “ELEMENT”是element-ui这个库暴露出来的全局对象。这个对象你可以从cdn资源的源码中找到或者根据需要引用的文件去node_modules文件夹下去寻找。下面我们从node_modules文件夹下的源码找一下element-ui,vue-router和vuex暴露出的全局对象，以下是各源码的截图：</p>
+<img src="/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/1.png" class>
+
+
+
+
+
+<p>配置完externals之后我们还需要利用htmlWebpackPlugin的能力让我们在打包的时候可以获取我们需要的CDN资源数据。首先我们在vue.config.js定义一个存放cdn资源连接的对象cdn</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cdn = &#123;</span><br><span class="line">  css: [<span class="string">&quot;//unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css&quot;</span>],</span><br><span class="line">  js: [</span><br><span class="line">    <span class="string">&quot;//unpkg.com/vue@2.6.11/dist/vue.min.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;//unpkg.com/vue-router@2.8.1/dist/vue-router.min.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;//unpkg.com/vuex@3.1.2/dist/vuex.min.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;//unpkg.com/element-ui@2.13.0/lib/index.js&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，我们把cdn这个对象放入我们的入口配置里</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pages: &#123;</span><br><span class="line">    index: &#123;</span><br><span class="line">      entry: <span class="string">&#x27;src/main.ts&#x27;</span>,</span><br><span class="line">      template: <span class="string">&#x27;public/index.html&#x27;</span>,</span><br><span class="line">      filename: <span class="string">&#x27;index.html&#x27;</span>,</span><br><span class="line">      title: <span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">      chunks: [<span class="string">&#x27;chunk-vendors&#x27;</span>, <span class="string">&#x27;chunk-common&#x27;</span>, <span class="string">&#x27;index&#x27;</span>],</span><br><span class="line">      cdn: cdn</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>最后，在入口文件的html模板处加上生成css和js脚本的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;utf-8&quot;</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">&quot;X-UA-Compatible&quot;</span> content=<span class="string">&quot;IE=edge&quot;</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width,initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">    &lt;link rel=<span class="string">&quot;icon&quot;</span> href=<span class="string">&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;</span><br><span class="line">    &lt;% <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> htmlWebpackPlugin.options.cdn.css) &#123; %&gt;</span><br><span class="line">      &lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;&lt;%= htmlWebpackPlugin.options.cdn.css[i] %&gt;&quot;</span> /&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;noscript&gt;</span><br><span class="line">      &lt;strong&gt;We<span class="string">&#x27;re sorry but &lt;%= htmlWebpackPlugin.options.title %&gt; doesn&#x27;</span>t work properly without JavaScript enabled. Please enable it to <span class="keyword">continue</span>.&lt;/strong&gt;</span><br><span class="line">    &lt;/noscript&gt;</span><br><span class="line">    &lt;div id=<span class="string">&quot;app&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;!-- built files will be auto injected --&gt;</span><br><span class="line">    &lt;% <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> htmlWebpackPlugin.options.cdn.js) &#123; %&gt;</span><br><span class="line">      &lt;script</span><br><span class="line">        type=<span class="string">&quot;text/javascript&quot;</span></span><br><span class="line">        src=<span class="string">&quot;&lt;%= htmlWebpackPlugin.options.cdn.js[i] %&gt;&quot;</span></span><br><span class="line">      &gt;&lt;/script&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>路由组件按需加载，如果不适用路由懒加载的话，会把所有组件一次性打包到app.js文件中，导致首次加载内容过多。</p>
+</li>
+<li><p>按需加载第三方资源，比如使用echarts时</p>
+</li>
+<li><p>使用nginx开始gzip减少网络传输流量大小， webpack开启gzip压缩</p>
+<p>首先需要下载插件<code>npm i -D compression-webpack-plugin</code></p>
+<p>再vue.config.js中配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入插</span></span><br><span class="line"><span class="keyword">const</span> CompressionWebpackPlugin = <span class="built_in">require</span>(<span class="string">&quot;compression-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="comment">//匹配此 &#123;RegExp&#125; 的资源</span></span><br><span class="line"><span class="keyword">const</span> productionGzipExtensions = <span class="regexp">/\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    configureWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> plugins = []</span><br><span class="line">        <span class="comment">// start 生成 gzip 压缩文件</span></span><br><span class="line">        plugins.push(</span><br><span class="line">            <span class="keyword">new</span> CompressionWebpackPlugin(&#123;</span><br><span class="line">                filename: <span class="string">&quot;[path].gz[query]&quot;</span>, <span class="comment">//目标资源名称，缩后的文件名(保持原文件名，后缀加.gz)</span></span><br><span class="line">                algorithm: <span class="string">&quot;gzip&quot;</span>, <span class="comment">//使用gzip压缩</span></span><br><span class="line">                test: productionGzipExtensions, <span class="comment">//处理所有匹配此 &#123;RegExp&#125; 的资源</span></span><br><span class="line">                threshold: <span class="number">10240</span>,<span class="comment">//只处理比这个值大的资源。对超过10k的数据压缩</span></span><br><span class="line">                minRatio: <span class="number">0.8</span> <span class="comment">//只有压缩率比这个值小的资源才会被处理</span></span><br><span class="line">            &#125;)</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">// End 生成 gzip 压缩文件</span></span><br><span class="line">        config.plugins = [...config.plugins, ...plugins];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -453,6 +503,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
