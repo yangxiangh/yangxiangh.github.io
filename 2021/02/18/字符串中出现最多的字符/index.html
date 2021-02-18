@@ -9,15 +9,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>找出字符串中出现次数最多的字符，以及出现次数 | xh小站长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这里有个个方法：indexOf()&#x2F;charAt()">
+  <meta name="description" content="这里有两个方法：indexOf()&#x2F;charAt()">
 <meta property="og:type" content="article">
 <meta property="og:title" content="找出字符串中出现次数最多的字符，以及出现次数">
 <meta property="og:url" content="http://example.com/2021/02/18/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%97%E7%AC%A6/index.html">
 <meta property="og:site_name" content="xh小站长">
-<meta property="og:description" content="这里有个个方法：indexOf()&#x2F;charAt()">
+<meta property="og:description" content="这里有两个方法：indexOf()&#x2F;charAt()">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-18T07:29:17.000Z">
-<meta property="article:modified_time" content="2021-02-18T07:58:16.532Z">
+<meta property="article:modified_time" content="2021-02-18T08:21:33.894Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
@@ -187,17 +187,20 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li>这里有个个方法：indexOf()/charAt()</li>
+<li>这里有两个方法：indexOf()/charAt()</li>
 </ul>
 <a id="more"></a>
 
-<p>indexOf(): 返回某个指定的字符串值在字符串中首次出现的位置(对大小写敏感)</p>
+<p>indexOf(): 返回某个指定的字符串值在字符串中首次出现的位置(对大小写敏感);</p>
+<p>​    语法:Object(string|array).indexOf(seachVale, fromIndex);参数1(必须),固定需检索的字符串;参数2(可选),圭迪昂在字符串中开始检索的位置(包括自身), 若省略,则从字符穿的首字母开始检索.</p>
 <p>charAt(): 返回某个指定位置的字符</p>
 <blockquote>
 <p>进入正题，求字符串’zhaochucichuzuiduodezifu’最多的字符</p>
 </blockquote>
 <p><strong>方法一:用数组(存在缺点,当出现组多的字符不止一个时,只能找到一个)</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;zhaochucichuzuiduodezifu&quot;</span>;</span><br><span class="line">   <span class="keyword">let</span> arr2 = []; <span class="comment">//定义一个新数组</span></span><br><span class="line">   <span class="comment">//循环遍历字符串</span></span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;str.length;i++) &#123;</span><br><span class="line">       <span class="keyword">let</span> index = -<span class="number">1</span>, j=<span class="number">0</span>;</span><br><span class="line">       <span class="comment">//找每个字符</span></span><br><span class="line">       <span class="keyword">do</span>&#123;</span><br><span class="line">           index = str.indexOf(str[i], index+<span class="number">1</span>) ;</span><br><span class="line">           <span class="keyword">if</span>(index!==-<span class="number">1</span>) j++</span><br><span class="line">       &#125; <span class="keyword">while</span>(index !== -<span class="number">1</span>);</span><br><span class="line">       arr2[j] = str[i]; <span class="comment">//把字符串str中的字符赋给数组arr索引为j的数据，当多次循环后，会出现重复赋值的现象，</span></span><br><span class="line">　　　　　　　　　　　　　　　　　　　　<span class="comment">//后赋值的会把之前的赋值覆盖掉，但不影响我们找出字符出现最多的那个</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">console</span>.log(arr2);</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&quot;最多的字符是&quot;</span> + arr2[arr2.length - <span class="number">1</span>]);</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&quot;次数是&quot;</span> + (arr2.length - <span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p><strong>方法二:用对象</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;zhaochucichuzuiduodezifu&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> o = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; str.length; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> char = str.charAt(i);</span><br><span class="line">        <span class="keyword">if</span> (o[char]) &#123;</span><br><span class="line">            o[char]++;<span class="comment">//次数加一</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            o[char] = <span class="number">1</span>;<span class="comment">//第一次出现，添加到对象中</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(o);</span><br><span class="line">    <span class="keyword">let</span> max = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> maxchar = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> o) &#123;</span><br><span class="line">        <span class="keyword">if</span> (max &lt; o[key]) &#123;</span><br><span class="line">            max = o[key];</span><br><span class="line">            maxchar = key;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;最多的字符是&quot;</span> + maxchar);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;出现的次数是&quot;</span> + max);</span><br></pre></td></tr></table></figure>
 
       
 
@@ -306,7 +309,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          promise
+          promise 的相关问题
         
       </div>
     </a>
@@ -458,6 +461,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
