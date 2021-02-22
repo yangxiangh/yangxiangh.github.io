@@ -67,7 +67,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 26
+			总文章数 29
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -166,157 +166,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-js高阶函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/18/js%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/">js高阶函数</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/18/js%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2021-02-18T03:41:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>是什么: 一个函数接收另一个函数作为参数，这种函数称为高阶函数</p></li></ul>
-        
-          <a class="article-more-a" href="/2021/02/18/js%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/18/js%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数组去重" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/18/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/">数组去重</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/18/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" class="archive-article-date">
-  	<time datetime="2021-02-18T03:41:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">a.ES6提供的方法</span><br><span class="line">       <span class="built_in">Array</span>.form(<span class="keyword">new</span> <span class="built_in">Set</span>(arr));<span class="comment">//缺点无法去除重复的‘&#123;&#125;’</span></span><br><span class="line">       [...new <span class="built_in">Set</span>(arr)]</span><br><span class="line">     b.利用indexOf去重 <span class="comment">//NaN,&#123;&#125;没有去重</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;arr1.length； i++) &#123;</span><br><span class="line">         <span class="keyword">if</span>(arr2.indexOfarr1[i]===-<span class="number">1</span>) &#123;</span><br><span class="line">           arr2.push(arr1[i]);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br><span class="line">     c.利用sort去重 <span class="comment">//NaN,&#123;&#125;没有去重</span></span><br><span class="line">       arr1 = arr1.sort(); <span class="keyword">var</span> arr2 =[arr1[<span class="number">0</span>]];</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>; i&lt;arr1.length；i++) &#123;</span><br><span class="line">         <span class="keyword">if</span>(arr1[i]!==ar1r[i-<span class="number">1</span>]) &#123;</span><br><span class="line">           arr2.push(arr1[i]);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br><span class="line">     d.利用includes去重 <span class="comment">//&#123;&#125;没有去重</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt; arr1.length; i++) &#123;</span><br><span class="line">         <span class="keyword">if</span>(!arr2.includes(arr1[i])) &#123;</span><br><span class="line">           arr2.push(arr1[i]);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/18/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-bind-apply-call" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -324,13 +173,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/18/bind-apply-call/">bind/apply/call方法的实现及区别</a>
+      <a class="article-title" href="/2020/08/14/bind-apply-call/">bind/apply/call方法的实现及区别</a>
     </h1>
   
 
         
-        <a href="/2021/02/18/bind-apply-call/" class="archive-article-date">
-  	<time datetime="2021-02-18T03:41:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-18</time>
+        <a href="/2020/08/14/bind-apply-call/" class="archive-article-date">
+  	<time datetime="2020-08-14T03:41:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-14</time>
 </a>
         
       </header>
@@ -340,7 +189,7 @@
         <ul>
 <li><p>内置call()方法的实现</p></li></ul>
         
-          <a class="article-more-a" href="/2021/02/18/bind-apply-call/#more">more >></a>
+          <a class="article-more-a" href="/2020/08/14/bind-apply-call/#more">more >></a>
         
       
 
@@ -364,7 +213,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/18/bind-apply-call/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/08/14/bind-apply-call/">展开全文 >></a>
         </p>
       
 
@@ -394,20 +243,20 @@
 
 
   
-    <article id="post-debounce-throttle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-字符串中出现最多的字符" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/18/debounce-throttle/">函数节流和防抖</a>
+      <a class="article-title" href="/2020/08/11/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%97%E7%AC%A6/">找出字符串中出现次数最多的字符，以及出现次数</a>
     </h1>
   
 
         
-        <a href="/2021/02/18/debounce-throttle/" class="archive-article-date">
-  	<time datetime="2021-02-18T03:32:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-18</time>
+        <a href="/2020/08/11/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%97%E7%AC%A6/" class="archive-article-date">
+  	<time datetime="2020-08-11T07:29:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
 </a>
         
       </header>
@@ -415,19 +264,120 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li><p>函数防抖</p>
-<p>是什么: 不是在某个事件触发就去执行函数，而是在指定的事件间隔内，只执行一次，减少函数的执行次数。</p>
-<p>实现思路: 将目标方法放在setTimeOut里面，然后这个方法是一个事件的回调函数，如果这个回调一直执行，那么这个动作就一直不执行。设置一个clearTImeout,这样setTimeOut里的方法就不会执行.</p>
-<p>使用场景: input输入检验/触发事件</p>
-<p>代码:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="built_in">clearTimeout</span>(<span class="built_in">this</span>.timer);</span><br><span class="line">         <span class="built_in">this</span>.timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">         <span class="keyword">let</span> url = DEFAULT_COMMON_CONFIG.ws+<span class="string">&#x27;place/v1/suggestion/?&#x27;</span>+<span class="string">&#x27;&amp;keyword=&#x27;</span>+value+<span class="string">&#x27;&amp;key=XQEBZ-WWO3U-7AWVZ-4CDZD-KL6R3-W4BEF&#x27;</span>;</span><br><span class="line">           <span class="built_in">this</span>.service.getData(url).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">             <span class="built_in">this</span>.listOfOption = res.data;</span><br><span class="line">           &#125;)</span><br><span class="line">         &#125;,<span class="number">500</span>)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>函数节流</p>
-<p>是什么:  让用户的方法都不执行，如果这样就是防抖,为了让用户的输入在某一时间段只执行一次，那么就需要保存上次执行的时间点与定时器。</p>
-<p>使用场景:  函数节流会用在比input/keyup更频繁的事件中，比如resize/touchmove/mouseMove/scroll。throttle会强制函数一固定的频率执行，因此这个方法比较适用于动画有关的场景。</p>
-<p>代码:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span> (<span class="params">fn, threshold</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">let</span> timeout, start = <span class="keyword">new</span> Data, threshold= threshold || <span class="number">160</span>;</span><br><span class="line">          <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">let</span> context = <span class="built_in">this</span>, args = <span class="built_in">arguments</span>, curr = <span class="keyword">new</span> <span class="built_in">Date</span>()-<span class="number">0</span>;</span><br><span class="line">            <span class="built_in">clearTimeout</span>(timeout);<span class="comment">//总是干掉事件回调</span></span><br><span class="line">            <span class="keyword">if</span>(curr-start &gt;= threshold) &#123;</span><br><span class="line">              fn.apply(context, args);</span><br><span class="line">              start = curr;</span><br><span class="line">            &#125; esle &#123;</span><br><span class="line">              <span class="comment">// 让方法在脱离事件后也能执行一次</span></span><br><span class="line">              timeout = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                fn.apply(context, args)</span><br><span class="line">              &#125;, threshold);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;  </span><br></pre></td></tr></table></figure>
+<li>这里有两个方法：indexOf()/charAt()</li>
+</ul>
+        
+          <a class="article-more-a" href="/2020/08/11/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%97%E7%AC%A6/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/11/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%97%E7%AC%A6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
 
 
+
+
+  
+    <article id="post-重绘-回流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/06/%E9%87%8D%E7%BB%98-%E5%9B%9E%E6%B5%81/">什么是重绘/回流？如何优化</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/06/%E9%87%8D%E7%BB%98-%E5%9B%9E%E6%B5%81/" class="archive-article-date">
+  	<time datetime="2020-08-06T08:31:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p><strong>回流（reflow)</strong></p>
+<p>布局或者几何属性需要改变称为回流。回流是影响浏览器性能的关键因素，因为其变涉及到部分页面（或者整个页面）的布局更新。一个元素的回流可能会导致了其所有子元素以及DOM中紧随其后的节点、祖先节点元素的随后的回流。</p>
+</li>
+<li><p><strong>重绘（repaint）</strong></p>
+<p>重绘是由于节点的几何属性发生改变或者由于样式发生改变<em>但不会影响布局</em>。例如outline, visibility, color、background-color等，重绘的代价是高昂的，因为浏览器必须验证DOM树上其他节点元素的可见性。</p>
+</li>
+<li><p><strong>什么时候会发生回流</strong></p>
+<p>1.添加或删除可见的DOM元素</p>
+<p>2.元素的位置/尺寸发生改变</p>
+<p>3.内容发生变化（例如文本变化或者图片被另一个不同尺寸的图片代替）</p>
+<p>4.页面开始渲染的时候</p>
+<p>5.浏览器窗口尺寸发生变化</p>
+<p><em>注意：回流一定会发生重绘，但重绘不一定会回流</em></p>
+</li>
+<li><p><strong>如何减少重绘和回流</strong></p>
+<p>1.CSS优化方法</p>
+<ul>
+<li>使用 transform 替代 top</li>
+<li>使用 visibility 替换 display: none ，因为前者只会引起重绘，后者会引发回流，改变了布局</li>
+<li>避免使用table布局，可能很小的一个小改动会造成整个 table 的重新布局</li>
+<li>尽可能在DOM树的最末端改变class，回流是不可避免的，但可以减少其影响。尽可能在DOM树的最末端改变class，可以限制了回流的范围，使其影响尽可能少的节点。</li>
+<li>避免设置多层内联样式，CSS 选择符从右往左匹配查找，避免节点层级过多。</li>
+<li>对于复杂动画使用据对定位，让其脱离文档流，避免影响其他元素的布局</li>
+<li>避免使用CSS表达式，可能会引发回流</li>
+</ul>
+<p>2.JS优化方法</p>
+<ul>
+<li>避免频繁操作样式，最好一次性重写style属性，或者将样式列表定义为class并一次性更改class属性。</li>
+<li>避免频繁操作DOM，创建一个documentFragment，在它上面应用所有DOM操作，最后再把它添加到文档中。 </li>
+</ul>
+</li>
+<li><p>最后我们来了解一下<strong>浏览器的渲染机制</strong></p>
+<p>浏览器采用流式布局模型。</p>
+<p>浏览器会把HTML解析成DOM元素，把CSS解析成CSSOM， DOM树和CSSOM树结合产生渲染树（render tree).</p>
+<p>有了RenderTree，我们就知道了所有节点的样式，然后计算他们在页面上的大小和位置，最后把节点绘制到页面上。</p>
+<p>为了构建渲染树，浏览器主要完成了以下工作：<br>1.从DOM树的根节点开始遍历每个可见节点。<br>2.对于每个可见的节点，找到CSSOM树中对应的规则，并应用它们。<br>3.根据每个可见节点以及其对应的样式，组合生成渲染树。<br>第一步中，既然说到了要遍历可见的节点，那么我们得先知道，什么节点是不可见的。不可见的节点包括：<br>a.一些不会渲染输出的节点，比如script、meta、link等。<br>b.一些通过css进行隐藏的节点。比如display:none。注意，利用visibility和opacity隐藏的节点，还是会显示在渲染树上的。只有display:none的节点才不会显示在渲染树上。<br>注意：渲染树只包含可见的节点.</p>
 </li>
 </ul>
 
@@ -443,6 +393,160 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DOM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/06/%E9%87%8D%E7%BB%98-%E5%9B%9E%E6%B5%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hash-history" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/29/hash-history/">vue的路由实现：hash和history模式</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/29/hash-history/" class="archive-article-date">
+  	<time datetime="2020-07-29T05:48:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>区别</strong></p>
+<p>1.hash模式带#号，history模式不带＃号。</p>
+        
+          <a class="article-more-a" href="/2020/07/29/hash-history/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">VueJs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/29/hash-history/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-js高阶函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/18/js%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/">js高阶函数</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/18/js%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2020-07-18T03:41:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>是什么: 一个函数接收另一个函数作为参数，这种函数称为高阶函数</p></li></ul>
+        
+          <a class="article-more-a" href="/2020/07/18/js%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
@@ -453,7 +557,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/18/debounce-throttle/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/18/js%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/">展开全文 >></a>
         </p>
       
 
@@ -490,13 +594,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/18/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B/">浏览器从输入url到页面加载完成都发生了什么？</a>
+      <a class="article-title" href="/2020/07/09/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B/">浏览器从输入url到页面加载完成都发生了什么？</a>
     </h1>
   
 
         
-        <a href="/2021/02/18/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2021-02-18T01:31:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-18</time>
+        <a href="/2020/07/09/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-07-09T01:31:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
 </a>
         
       </header>
@@ -505,7 +609,7 @@
       
         <p>今天来详细学习一下浏览器从输入url到页面加载完成都发生了什么。</p>
         
-          <a class="article-more-a" href="/2021/02/18/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B/#more">more >></a>
+          <a class="article-more-a" href="/2020/07/09/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B/#more">more >></a>
         
       
 
@@ -529,163 +633,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/18/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-import-require" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/05/import-require/">import &amp; require</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/05/import-require/" class="archive-article-date">
-  	<time datetime="2021-02-05T08:05:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天来总结以下import和require的区别，以及使用方法。</p>
-<p>import和require都是为了模块化而生。但是他们是不同模块化规范的产物。</p>
-        
-          <a class="article-more-a" href="/2021/02/05/import-require/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/05/import-require/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-sse" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/04/sse/">SSE：使用HTTP做服务端数据推送的技术及其他通信技术</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/04/sse/" class="archive-article-date">
-  	<time datetime="2021-02-04T02:32:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>SSE(Server-Sent Events): 通俗说就是一种基于HTTP的，以流的形式由服务端持续向客户端发送数据的技术。</p>
-</blockquote>
-<p>1.SSE</p>
-        
-          <a class="article-more-a" href="/2021/02/04/sse/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">H5</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/04/sse/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/09/%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E8%BF%87%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
@@ -722,13 +670,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/">首屏加载优化方案</a>
+      <a class="article-title" href="/2020/07/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/">首屏加载优化方案</a>
     </h1>
   
 
         
-        <a href="/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2021-02-03T10:01:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
+        <a href="/2020/07/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" class="archive-article-date">
+  	<time datetime="2020-07-03T10:01:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
 </a>
         
       </header>
@@ -737,7 +685,7 @@
       
         <p>背景：随着单页面应用越来越大，导致首屏加载速度慢。</p>
         
-          <a class="article-more-a" href="/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/#more">more >></a>
+          <a class="article-more-a" href="/2020/07/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/#more">more >></a>
         
       
 
@@ -761,7 +709,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/">展开全文 >></a>
         </p>
       
 
@@ -791,29 +739,29 @@
 
 
   
-    <article id="post-browsercatch" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-左侧固定，右侧自适应布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/03/browsercatch/">浏览器的缓存机制</a>
+      <a class="article-title" href="/2020/07/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/">左侧固定，右侧自适应布局</a>
     </h1>
   
 
         
-        <a href="/2021/02/03/browsercatch/" class="archive-article-date">
-  	<time datetime="2021-02-03T07:39:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
+        <a href="/2020/07/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/" class="archive-article-date">
+  	<time datetime="2020-07-03T05:31:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>背景：代码更新完后，浏览器请求的依旧是旧版本的页面。为什么？以及如何解决呢。接下来研究一下浏览器的缓存机制。</p>
+        <p>今天来总结以下，左侧宽度固定，右侧自使用的几种实现方式。效果图：</p>
         
-          <a class="article-more-a" href="/2021/02/03/browsercatch/#more">more >></a>
+          <a class="article-more-a" href="/2020/07/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/#more">more >></a>
         
       
 
@@ -822,11 +770,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HTML CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/03/browsercatch/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/">展开全文 >></a>
         </p>
       
 
@@ -856,33 +815,105 @@
 
 
   
-    <article id="post-CORS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-数组去重" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/03/CORS/">CORS</a>
+      <a class="article-title" href="/2020/07/02/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/">数组去重</a>
     </h1>
   
 
         
-        <a href="/2021/02/03/CORS/" class="archive-article-date">
-  	<time datetime="2021-02-03T06:29:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
+        <a href="/2020/07/02/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" class="archive-article-date">
+  	<time datetime="2020-07-02T03:41:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>参考文章：  <a target="_blank" rel="noopener" href="https://blog.csdn.net/lambert310/article/details/51683775">https://blog.csdn.net/lambert310/article/details/51683775</a></p>
-</blockquote>
-<p>1.什么是跨域？</p>
-<p>跨域指当前浏览器不能执行其他浏览器的脚本。是由浏览器的同源测率造成的。就是浏览器在搞事情。</p>
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">a.ES6提供的方法</span><br><span class="line">       <span class="built_in">Array</span>.form(<span class="keyword">new</span> <span class="built_in">Set</span>(arr));<span class="comment">//缺点无法去除重复的‘&#123;&#125;’</span></span><br><span class="line">       [...new <span class="built_in">Set</span>(arr)]</span><br><span class="line">     b.利用indexOf去重 <span class="comment">//NaN,&#123;&#125;没有去重</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;arr1.length； i++) &#123;</span><br><span class="line">         <span class="keyword">if</span>(arr2.indexOfarr1[i]===-<span class="number">1</span>) &#123;</span><br><span class="line">           arr2.push(arr1[i]);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br><span class="line">     c.利用sort去重 <span class="comment">//NaN,&#123;&#125;没有去重</span></span><br><span class="line">       arr1 = arr1.sort(); <span class="keyword">var</span> arr2 =[arr1[<span class="number">0</span>]];</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>; i&lt;arr1.length；i++) &#123;</span><br><span class="line">         <span class="keyword">if</span>(arr1[i]!==ar1r[i-<span class="number">1</span>]) &#123;</span><br><span class="line">           arr2.push(arr1[i]);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br><span class="line">     d.利用includes去重 <span class="comment">//&#123;&#125;没有去重</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt; arr1.length; i++) &#123;</span><br><span class="line">         <span class="keyword">if</span>(!arr2.includes(arr1[i])) &#123;</span><br><span class="line">           arr2.push(arr1[i]);</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/02/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
         
-          <a class="article-more-a" href="/2021/02/03/CORS/#more">more >></a>
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数组扁平化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/19/%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/">数组扁平化</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/19/%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2020-05-19T06:03:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>是什么： 通俗说就是将多维数组拉伸为以为数组</li>
+</ul>
+        
+          <a class="article-more-a" href="/2020/05/19/%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/#more">more >></a>
         
       
 
@@ -906,7 +937,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/03/CORS/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/19/%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/">展开全文 >></a>
         </p>
       
 
@@ -1055,6 +1086,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
@@ -1067,11 +1102,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpake</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JS排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">性能优化</a>
               </li>
              
               <li class="article-tag-list-item">

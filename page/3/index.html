@@ -67,7 +67,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 26
+			总文章数 29
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -166,29 +166,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-左侧固定，右侧自适应布局" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vue数据双向绑定" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/">左侧固定，右侧自适应布局</a>
+      <a class="article-title" href="/2020/05/07/vue%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">vue数据双向绑定的原理</a>
     </h1>
   
 
         
-        <a href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/" class="archive-article-date">
-  	<time datetime="2021-02-03T05:31:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
+        <a href="/2020/05/07/vue%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" class="archive-article-date">
+  	<time datetime="2020-05-07T01:56:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天来总结以下，左侧宽度固定，右侧自使用的几种实现方式。效果图：</p>
+        <ul>
+<li><p>先来总体上看一下：vue的数据双向绑定是通过数据劫持和发布-订阅者功能来实现的。<br>实现步骤：1.实现一个监听者Oberver来劫持并监听所有的属性，一旦有属性发生变化就通知订阅者</p>
+<p>2.实现一个订阅者watcher来接受属性变化的通知并执行相应的方法，从而更新视图</p>
+<p>3.实现一个解析器compile，可以扫描和解析每个节点的相关指令，并根据初始化模板数据以及初始化相对应的订阅者</p>
+</li>
+<li><p>接下来详细研究一下每一步的实现</p></li></ul>
         
-          <a class="article-more-a" href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/#more">more >></a>
+          <a class="article-more-a" href="/2020/05/07/vue%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/#more">more >></a>
         
       
 
@@ -202,7 +207,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HTML CSS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">VueJs</a>
         		</li>
       		
 		</ul>
@@ -212,7 +217,312 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/03/%E5%B7%A6%E4%BE%A7%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/07/vue%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vue自定义指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/19/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">vue如何新增自定义指令/过滤器</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/19/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2020-04-19T07:13:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>​    今天来总结一下自定义指令和自定义过滤器的使用方法。</p>
+        
+          <a class="article-more-a" href="/2020/04/19/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">VueJs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/19/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-冒泡排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/12/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">排序</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/12/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" class="archive-article-date">
+  	<time datetime="2020-04-12T06:03:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>性能对比</p></li></ul>
+        
+          <a class="article-more-a" href="/2020/04/12/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JS排序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/12/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-懒加载和预加载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/08/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/">图片懒加载和预加载的区别，实现，使用场景</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/08/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" class="archive-article-date">
+  	<time datetime="2020-04-08T03:46:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>懒加载</strong></p>
+        
+          <a class="article-more-a" href="/2020/04/08/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能优化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/08/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-webpack总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/22/webpack%E6%80%BB%E7%BB%93/">webpack基础知识总结</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/22/webpack%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2020-03-22T01:29:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 今天从头捋一遍webpack的基础知识。 </p>
+        
+          <a class="article-more-a" href="/2020/03/22/webpack%E6%80%BB%E7%BB%93/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpake</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/22/webpack%E6%80%BB%E7%BB%93/">展开全文 >></a>
         </p>
       
 
@@ -249,13 +559,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/01/BFC/">浅谈BFC</a>
+      <a class="article-title" href="/2020/03/11/BFC/">浅谈BFC</a>
     </h1>
   
 
         
-        <a href="/2021/02/01/BFC/" class="archive-article-date">
-  	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
+        <a href="/2020/03/11/BFC/" class="archive-article-date">
+  	<time datetime="2020-03-11T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
 </a>
         
       </header>
@@ -265,7 +575,7 @@
         <p>1.什么是BFC?</p>
 <p>BFC全称<strong>块级格式化上下文</strong>。他是一个独立渲染区域，规定内部元素如何布局。当涉及可视化布局的时候，BFC提供一个环境，html元素在这个环境中按照规则进行布局。一个环境中的元素不会影响到其他环境的布局。</p>
         
-          <a class="article-more-a" href="/2021/02/01/BFC/#more">more >></a>
+          <a class="article-more-a" href="/2020/03/11/BFC/#more">more >></a>
         
       
 
@@ -289,7 +599,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/01/BFC/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/03/11/BFC/">展开全文 >></a>
         </p>
       
 
@@ -319,101 +629,30 @@
 
 
   
-    <article id="post-DOM事件流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-http1-0-http1-1-http2-0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/">DOM事件流</a>
+      <a class="article-title" href="/2020/02/22/http1-0-http1-1-http2-0/">http1.0/http1.1.http2.0</a>
     </h1>
   
 
         
-        <a href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/" class="archive-article-date">
-  	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
+        <a href="/2020/02/22/http1-0-http1-1-http2-0/" class="archive-article-date">
+  	<time datetime="2020-02-22T08:22:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.什么事件流</p>
-<blockquote>
-<p>js操作CSS称作脚本化CSS，而js与html的交互是通过事件实现的，事件就是文档或者浏览器窗口中发生的一些特定是交互瞬间，而事件流（又称作事件传播）描述的是从页面中接收事件的顺序。</p>
-</blockquote>
-<p>事件发生时会在元素节点和根节点直接按照特定顺序传播，路径经过的所有节点都会收到该事件，这个传播过程就叫做DOM事件流。</p>
+        <p><strong>先来学习一下什么是http协议</strong></p>
+<p>http超文本传输协议，通过浏览器和服务器进行数据交换，进行超文本（文本，图片，视频等）传输。站在前端的角度而言，http就是一个异步传输数据的手段。所以http本质解决的数据传输的问题。</p>
         
-          <a class="article-more-a" href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/01/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JSONP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/01/JSONP/">记录一个使用JSOP解决跨域坑</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/01/JSONP/" class="archive-article-date">
-  	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>问题背景(angular项目)</li>
-</ul>
-<p>项目使用nginx配置代理，线上调用腾讯地图WebService API时产生跨域问题。服务端不能解跨域这种跨域问题，只能由前端去探索。例如：关键词输入提示接口(<a target="_blank" rel="noopener" href="https://apis.map.qq.com/ws/place/v1/suggestion?keyword=%E6%9C%9D%E9%98%B3&amp;region=%E5%8C%97%E4%BA%AC%E5%B8%82&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77)%E3%80%82%E5%85%B6%E5%AE%9E%E5%AE%98%E7%BD%91%E5%B7%B2%E7%BB%8F%E7%BB%99%E5%87%BA%E7%AD%94%E6%A1%88%EF%BC%8C%E5%A6%82%E5%9B%BE">https://apis.map.qq.com/ws/place/v1/suggestion?keyword=朝阳&amp;region=北京市&amp;key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77)。其实官网已经给出答案，如图</a></p>
-        
-          <a class="article-more-a" href="/2021/02/01/JSONP/#more">more >></a>
+          <a class="article-more-a" href="/2020/02/22/http1-0-http1-1-http2-0/#more">more >></a>
         
       
 
@@ -427,7 +666,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JSONP 腾讯API</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
         		</li>
       		
 		</ul>
@@ -437,86 +676,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/01/JSONP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-github-hexo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/01/github-hexo/">github+hexo</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/01/github-hexo/" class="archive-article-date">
-  	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录搭建git博客的过程</p>
-<ul>
-<li><p>准备工作</p>
-<p>github账号,安装Node.js/npm/git</p></li></ul>
-        
-          <a class="article-more-a" href="/2021/02/01/github-hexo/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/01/github-hexo/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/02/22/http1-0-http1-1-http2-0/">展开全文 >></a>
         </p>
       
 
@@ -553,13 +713,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/01/web%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/">web安全问题总结</a>
+      <a class="article-title" href="/2020/02/18/web%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/">web安全问题总结</a>
     </h1>
   
 
         
-        <a href="/2021/02/01/web%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
+        <a href="/2020/02/18/web%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-02-18T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-18</time>
 </a>
         
       </header>
@@ -569,7 +729,7 @@
         <p>1.Web安全分类</p>
 <p>XSS（Cross Site Scripting,跨站脚本攻击），CSRF(Cross Site Request Forgery,跨站请求伪造)，点击劫持， URL跳转漏洞，SQL注入， OS命令注入。</p>
         
-          <a class="article-more-a" href="/2021/02/01/web%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/#more">more >></a>
+          <a class="article-more-a" href="/2020/02/18/web%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/#more">more >></a>
         
       
 
@@ -593,7 +753,84 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/01/web%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/02/18/web%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-import-require" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/05/import-require/">import &amp; require</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/05/import-require/" class="archive-article-date">
+  	<time datetime="2020-02-05T08:05:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天来总结以下import和require的区别，以及使用方法。</p>
+<p>import和require都是为了模块化而生。但是他们是不同模块化规范的产物。</p>
+        
+          <a class="article-more-a" href="/2020/02/05/import-require/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/05/import-require/">展开全文 >></a>
         </p>
       
 
@@ -742,6 +979,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
@@ -754,11 +995,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpake</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JS排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
