@@ -7,17 +7,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: 性能优化 | xh小站长</title>
+  <title>每日一题6-10 | xh小站长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人技术博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="xh小站长">
-<meta property="og:url" content="http://example.com/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
+  <meta name="description" content="每天积累一个小问题…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日一题6-10">
+<meta property="og:url" content="http://example.com/2021/02/23/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%985-10/index.html">
 <meta property="og:site_name" content="xh小站长">
-<meta property="og:description" content="个人技术博客">
+<meta property="og:description" content="每天积累一个小问题…">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-23T07:48:21.000Z">
+<meta property="article:modified_time" content="2021-02-24T01:52:35.178Z">
 <meta property="article:author" content="Yangxh">
-<meta property="article:tag" content="技术记录">
+<meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="xh小站长" type="application/atom+xml">
@@ -164,60 +166,228 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-每日一题5-10" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/08/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" class="archive-article-date">
-  	<time datetime="2020-04-08T03:46:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/">图片懒加载和预加载的区别，实现，使用场景</a>
+    <h1 class="article-title" itemprop="name">
+      每日一题6-10
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/02/23/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%985-10/" class="archive-article-date">
+  	<time datetime="2021-02-23T07:48:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每天积累一个小问题…</p>
+<a id="more"></a>
+
+<p><strong><em>6.输出什么？</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> a=<span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p><em>解析</em>：使用<code>var</code>关键字，可以用相同的名称声名多个变量，然后变量将保存最新的值。</p>
+<p><strong><em>7.cool_secret可以访问多长时间</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.setItem(<span class="string">&#x27;cool_secret&#x27;</span>,<span class="number">111</span>);<span class="comment">//当用户关掉标签页时,会被销毁</span></span><br></pre></td></tr></table></figure>
+<p><em>解析</em>；关闭tab标签页是，sessionStorage存储的数据才会删除。如果使用 <code>localStorage</code>，那么数据将永远在那里，除非调用了 <code>localStorage.clear()</code>。</p>
+<p><strong><em>7.输出什么？</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum = <span class="built_in">eval</span>(<span class="string">&#x27;10*10+5&#x27;</span>);<span class="comment">//105</span></span><br></pre></td></tr></table></figure>
+<p><em>解析</em>：<code>eval(string)</code>函数可以计算某个字符串，并执行其中的Javascript代码</p>
+<p>​    说明：该方法只接受原始字符串作为参数，如果 string 参数不是原始字符串，那么该方法将不作任何改变地返回。因此请不要为 eval() 函数传递 String 对象来作为参数。</p>
+<p>如果参数中没有合法的表达式和语句，则抛出 SyntaxError 异常。</p>
+<p>如果非法调用 eval()，则抛出 EvalError 异常。</p>
+<p><strong><em>8.输出什么？</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAge</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    &#x27;use strict&#x27;</span></span><br><span class="line">    age = <span class="string">&#x27;11&#x27;</span></span><br><span class="line">    <span class="built_in">console</span>.log(age)</span><br><span class="line">&#125;</span><br><span class="line">getAge()；<span class="comment">//Uncaught ReferenceError: age is not defined</span></span><br></pre></td></tr></table></figure>
+<p><em>解析</em>：使用 <code>&quot;use strict&quot;</code>，你可以确保不会意外地声明全局变量。我们从来没有声明变量 <code>age</code>，因为我们使用 <code>&quot;use strict&quot;</code>，它将抛出一个引用错误。如果我们不使用 <code>&quot;use strict&quot;</code>，它就会工作，因为属性 <code>age</code> 会被添加到全局对象中了。</p>
+<p>补充：<code>ReferenceError</code>和<code>TypeError</code>错误的区别</p>
+<ul>
+<li>字面上的意思分别是引用错误，类型错误</li>
+<li>作用域：referenceError是在作用域中找不到，typeError是在作用域中找到了，但是做了不能做的事</li>
+</ul>
+<p><strong><em>9.输出什么？</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAge</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">typeof</span> args)</span><br><span class="line">&#125;</span><br><span class="line">getAge(<span class="number">21</span>);<span class="comment">//object</span></span><br></pre></td></tr></table></figure>
+<p><em>解析</em>：<strong>扩展运算符（…args)返回实参组成是数组</strong>，而数组是对象</p>
+<p>补充：扩展运算符（…)</p>
+<ul>
+<li><p>基本用法：拆解字符串与数组</p>
+</li>
+<li><p>扩展运算符的应用</p>
+<ul>
+<li><p>1.某些场景可以代替apply</p>
+<p>在使用Math.max()求数组的最大值时，ES5可以通过apply做到</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5 apply写法</span></span><br><span class="line"><span class="keyword">var</span> arr =[<span class="number">1</span>,,<span class="number">5</span>,<span class="number">9</span>,<span class="number">12</span>,<span class="number">4</span>]</span><br><span class="line"><span class="keyword">var</span> max1 = <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>,arr)<span class="comment">//12</span></span><br><span class="line"><span class="comment">//ES6 扩展运算符的写法</span></span><br><span class="line"><span class="keyword">var</span> max2= <span class="built_in">Math</span>.max(...arr)<span class="comment">//12</span></span><br></pre></td></tr></table></figure></li>
+<li><p>2.代替数组的push/concat等方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//push</span></span><br><span class="line">    <span class="keyword">var</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], arr2 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], arr3=[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line">    <span class="built_in">Array</span>.prototype.push.apply(arr1,arr2);<span class="comment">//[1,2,3,4,5,6]</span></span><br><span class="line">    <span class="comment">//concat</span></span><br><span class="line">    arr1.concat(arr2,arr3);<span class="comment">//[1,2,3,4,5,6,7,8,9]</span></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    arr1.push(...arr2);<span class="comment">//[1,2,3,4,5,6]</span></span><br><span class="line">[...arr1,...arr2,...arr3];<span class="comment">//[1,2,3,4,5,6,7,8,9]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.拷贝数组或对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;拷贝数组</span><br><span class="line">var arr1 &#x3D; [1,2];</span><br><span class="line">var arr2&#x3D; [...arr1];&#x2F;&#x2F;[1,2]</span><br><span class="line">&#x2F;&#x2F;拷贝对象</span><br><span class="line">var obj &#x3D;&#123;age:1,name:&#39;xiaoming&#39;, arr:&#123;a1:[1,2]&#125;&#125;</span><br><span class="line">var obj1 &#x3D; [...obj];&#x2F;&#x2F;&#123;age: 1, name: &quot;lis&quot;, arr: &#123;…&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.将伪数组转换成数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nodelist =<span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log([...nodelist]);<span class="comment">// [div, div, div ... ]</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<p><strong><em>10.输出什么？</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkAge</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(data === &#123;<span class="attr">age</span>:<span class="number">18</span>&#125;) &#123;</span><br><span class="line">  	 <span class="built_in">console</span>.log(<span class="string">&#x27;You are an adult!&#x27;</span>)</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span> (data == &#123; <span class="attr">age</span>: <span class="number">18</span> &#125;) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;You are still an adult.&#x27;</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Hmm.. You don&#x27;t have an age I guess`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">checkAge(&#123; <span class="attr">age</span>: <span class="number">18</span> &#125;)<span class="comment">//mm.. You don&#x27;t have an age I guess</span></span><br></pre></td></tr></table></figure>
+<p><em>解析</em>：在测试相等性时，基本类型通过它们的值（value）进行比较，而对象通过它们的引用（reference）进行比较。JavaScript 检查对象是否具有对内存中相同位置的引用。题目中我们正在比较的两个对象不是同一个引用：作为参数传递的对象引用的内存位置，与用于判断相等的对象所引用的内存位置并不同。</p>
+<p>补充：<strong>如何判断两个对象相等？</strong></p>
+<p><strong><em>underscore中的isEqal（）方法</em></strong>。isEqal的实现可以参考这篇文章</p>
+<blockquote>
+<p>一篇很详细的文章：<a target="_blank" rel="noopener" href="https://github.com/mqyqingfeng/Blog/issues/41">https://github.com/mqyqingfeng/Blog/issues/41</a></p>
+</blockquote>
+<p>判断两个对象是否相等,我们认为===为true，两者就相等，思路如下：</p>
+<ul>
+<li>1.先判断两者是不是对象</li>
+<li>2.是对象后，判断两者的长度是否一致</li>
+<li>3.判断两个对象的相应的key对应的值是否相同</li>
+<li>4.用递归判断里边的对象，循环1-4</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.keys(obj):给定对象的所有可枚举属性的字符串数组。</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能优化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/23/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%985-10/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2021/02/23/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%981-5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每日一题1-5</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -242,9 +412,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

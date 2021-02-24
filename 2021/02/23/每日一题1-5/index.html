@@ -7,17 +7,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: 性能优化 | xh小站长</title>
+  <title>每日一题1-5 | xh小站长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人技术博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="xh小站长">
-<meta property="og:url" content="http://example.com/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
+  <meta name="description" content="每天积累一个小问题…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每日一题1-5">
+<meta property="og:url" content="http://example.com/2021/02/23/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%981-5/index.html">
 <meta property="og:site_name" content="xh小站长">
-<meta property="og:description" content="个人技术博客">
+<meta property="og:description" content="每天积累一个小问题…">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-23T05:47:52.000Z">
+<meta property="article:modified_time" content="2021-02-23T07:48:51.393Z">
 <meta property="article:author" content="Yangxh">
-<meta property="article:tag" content="技术记录">
+<meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="xh小站长" type="application/atom+xml">
@@ -164,60 +166,251 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-每日一题1-5" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/08/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/" class="archive-article-date">
-  	<time datetime="2020-04-08T03:46:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/%E6%87%92%E5%8A%A0%E8%BD%BD%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD/">图片懒加载和预加载的区别，实现，使用场景</a>
+    <h1 class="article-title" itemprop="name">
+      每日一题1-5
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/02/23/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%981-5/" class="archive-article-date">
+  	<time datetime="2021-02-23T05:47:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每天积累一个小问题…</p>
+<a id="more"></a>
+
+<p><strong><em>1.输出什么？</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.property.giveLiliPizza = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&#x27;Just give Lili pizza already!&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> name = <span class="string">&#x27;Lili&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(name.giveLiliPizza());<span class="comment">//Just give Lili pizza already!</span></span><br></pre></td></tr></table></figure>
+<p><em>解析</em>：<code>String</code>是内置的构造函数，可以向他添加属性。在他的原型中添加了一个方法。基本字符串被自动转换为字符串对象，有字符串原型函数生成，因此所有string都可以访问该方法。</p>
+<p><strong><em>2.输出什么？</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>;i&lt;<span class="number">5</span>;i++) &#123;</span><br><span class="line">	<span class="keyword">if</span>(i===<span class="number">3</span>) <span class="keyword">continue</span>;</span><br><span class="line">     <span class="built_in">console</span>.log(i);<span class="comment">//1,2,4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>解析：</em>如果返回条件为true，则<code>continue</code>语句一跳过本次循环</p>
+<p><em>补充：**</em>js中return，continue，break的用法以及区别！**</p>
+<p>同：都会将此时进行的语句停止。</p>
+<p>异：</p>
+<ul>
+<li>break：立即结束语句，跳出语句，进行下一个语句的执行</li>
+<li>continue：停止当前语句，并从头执行该语句</li>
+<li>return： 停止函数</li>
+<li>使用的语句环境不一样，break/continue是用在循环或者switch语句中的，return是用在函数语句中的</li>
+</ul>
+<p><em>使用示例</em></p>
+<p><strong>break和continue</strong>,这两个应用的范围是退出循环或者switch语句，在其他地方使用会导致错误。</p>
+<ul>
+<li><p>break:<strong>由于它是用来退出循环或者switch语句，所以只有当它出现在这些语句时，这种形式的break语句才是合法的</strong>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>;i&lt;<span class="number">5</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span>(i===<span class="number">3</span>) <span class="keyword">break</span>;</span><br><span class="line">   <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;<span class="comment">//1,2</span></span><br></pre></td></tr></table></figure>
+<p>当i===3时，直接退出for循环，这个循环不在被执行，直接进入下一个语句。</p>
+</li>
+<li><p>continue：和break语句相似。不同的是，他不是退出一个循环，而是开始循环的新一次迭代。<strong>continue语句只只能用在while，do/while,for,for/in语句的循环体中</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>;i&lt;<span class="number">5</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span>(i===<span class="number">3</span>) <span class="keyword">continue</span>;</span><br><span class="line">   <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;<span class="comment">//1,2,4</span></span><br></pre></td></tr></table></figure></li>
+<li><p>return：用于指定函数的返回值<strong>应用范围只能在函数体内，出现在代码的其他任何地方都会造成语法错误</strong></p>
+<p>return true；返回正常的处理结果，终止处理；</p>
+<p>return false;  返回错误的处理结果，终止处理；组织提交表单；组织执行默认行为；</p>
+<p>return;把控制权交换给页面；</p>
+</li>
+</ul>
+<p><strong><em>3.JavaScript全局执行上下文，为你做了两件事：全局对象和this关键字（√）</em></strong></p>
+<p><strong><em>4.输出什么</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;<span class="attr">a</span>:<span class="string">&#x27;one&#x27;</span>, <span class="attr">b</span>:<span class="string">&#x27;two&#x27;</span>, <span class="attr">a</span>:<span class="string">&#x27;three&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj);<span class="comment">//&#123;a:&#x27;three&#x27;, b:&#x27;two&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+<p><em>解析</em>：如果有两个同名的键值对，则键会被替换掉。他仍然位于第一个键出现的位置，但是键值是组后出现的哪个键的值。</p>
+<p><strong><em>5.输出什么？</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="number">1</span>: <span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>: <span class="string">&#x27;b&#x27;</span>, <span class="number">3</span>: <span class="string">&#x27;c&#x27;</span> &#125;</span><br><span class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">obj.hasOwnProperty(<span class="string">&#x27;1&#x27;</span>)<span class="comment">//true</span></span><br><span class="line">obj.hasOwnProperty(<span class="number">1</span>)<span class="comment">//true</span></span><br><span class="line">set.has(<span class="string">&#x27;1&#x27;</span>)<span class="comment">//false</span></span><br><span class="line">set.has(<span class="number">1</span>)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p><em>解析</em>：所有对象的键（不包含symbol)在底层都是字符串，即使你没有将其作为字符串输入。obj.hasOwnProperty(‘1’)返回true</p>
+<p>对于集合，他不是这样工作的。在我们的集合中没有’1’:set.has(‘1’)返回false</p>
+<p><strong>补充</strong>：</p>
+<p>1.对象的属性</p>
+<ul>
+<li><p><strong>hasOwnProperty(prop)</strong></p>
+<blockquote>
+<p>这个方法可以用来检测一个对象是否含有特定的自身属性，和 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/in"><code>in</code></a> 运算符不同，该方法会忽略掉那些从原型链上继承到的属性。<br>语法：obj.hasOwnProperty(prop)<br>参数：要检测的属性 字符串 名称或者 Symbol<br>返回值： 用来判断某个对象是否含有指定的属性的 Boolean</p>
+</blockquote>
+</li>
+</ul>
+<p>接下来总结一下Object对象具有的其他属性</p>
+<ul>
+<li><strong>constructor</strong>：对创建对象的函数的引用（指针）。对于Object对象，该指针指向原始的Object（）函数</li>
+<li><strong>Prototype</strong>：对该对象的对象原型的引用。对于所有的对象，他默认返回object对象的一个实例</li>
+<li>**IsPrototypeOf(object)**：判断该对象是否为另一个对象的原型</li>
+<li><strong>PropertyIsEnumerable</strong>：判断给定的属性是否可以用 for…in 语句进行枚举</li>
+<li><strong>ToString（）</strong>：返回对象的原始字符串表示。</li>
+<li>**ValueOf()**：返回最适合该对象的原始值。对于许多对象，该方法返回的值都与 ToString() 的返回值相同。</li>
+</ul>
+<p>2.ES6中Set的基本用法</p>
+<p>ES6提供了新的数据结构Set,它类似于数组，但是成员的值都是唯一的，没有重复的值。</p>
+<p>Set实例的属性和方法：</p>
+<ul>
+<li>add(value)：添加某个值，返回 Set 结构本身</li>
+<li>delete(value)：删除某个值，返回一个布尔值，表示删除是否成功</li>
+<li>has(value)：回一个布尔值，表示该值是否为Set的成员</li>
+<li>clear()：清除所有成员，没有返回值</li>
+<li><em>Array.from方法可以将 Set 结构转为数组</em></li>
+</ul>
+<p>Set遍历操作：</p>
+<ul>
+<li>keys()：返回键名的遍历器</li>
+<li>values()：返回键值</li>
+<li>entries()：返回键值对</li>
+<li>forEach()：使用回调函数遍历每个成员</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能优化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/23/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%981-5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2021/02/23/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%985-10/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          每日一题6-10
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2021/02/23/%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">自适应布局(待完善)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -242,9 +435,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
