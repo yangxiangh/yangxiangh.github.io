@@ -17,7 +17,7 @@
 <meta property="og:description" content="背景：代码更新完后，浏览器请求的依旧是旧版本的页面。为什么？以及如何解决呢。接下来研究一下浏览器的缓存机制。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-07T07:39:45.000Z">
-<meta property="article:modified_time" content="2021-02-22T09:52:25.371Z">
+<meta property="article:modified_time" content="2021-03-05T03:06:12.031Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="技术记录">
 <meta name="twitter:card" content="summary">
@@ -69,7 +69,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 43
+			总文章数 48
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -190,7 +190,7 @@
 <a id="more"></a>
 
 <p>1.什么是浏览器缓存(也就是http缓存)</p>
-<p>浏览器缓存就是把一个已经请求过的Wenb资源copy一份放在浏览器中。缓存会根据请求，保存输入内容的副本。当下一次请求的时候，如果URL相同，浏览器会根据缓存机制决定使用缓存数据还是发起请求。</p>
+<p>浏览器缓存就是把一个已经请求过的Web资源copy一份放在浏览器中。缓存会根据请求，保存输入内容的副本。当下一次请求的时候，如果URL相同，浏览器会根据缓存机制决定使用缓存数据还是发起请求。</p>
 <p>2.缓存带来的好处</p>
 <ul>
 <li>减少网络带宽消耗</li>
@@ -208,11 +208,11 @@
 <li><p>校验值（验证机制）：服务器返回资源的时候， 又是在控制头信息带上这个资源的实体标签Etag(Entity Tag),它可以作为浏览器再次请求过程中的校验标识，如果发现标识不匹配，说明资源已经被修改，或则过期，浏览器需要中心请求资源。 </p>
 </li>
 </ul>
-<p>4.缓存的分类：强制缓存/协商缓存。两类缓存可以同时并存，强缓存的优先级高于协商缓存。</p>
+<p>4.缓存的分类：强制缓存/协商缓存（304）。两类缓存可以同时并存，强缓存的优先级高于协商缓存。</p>
 <ul>
-<li><p>强缓存：不向服务器发起请求直接从缓存中读取资源。清缓存可以通过设置http header实现：Expires和catch-Control</p>
+<li><p>强缓存：不向服务器发起请求直接从缓存中读取资源。强缓存可以通过设置http header实现：Expires和catch-Control</p>
 <p>Expires（绝对值）：缓存过期时间，用来指定资源到期时间，是服务器端的具体时间点。Expires是HTTP/1的产物，受限于本地时间，如果修改了本地时间，可能回造成缓存失效。 </p>
-<p>Catch-Control（相对值）：在HTTP/1.1中，catch-control是最重要的规则，余姚用于控制网页缓存。catch-control的值：</p>
+<p>Catch-Control（相对值）：在HTTP/1.1中，catch-control是最重要的规则，用于控制网页缓存。catch-control的值：</p>
 <p><strong>public</strong>:表示所有内容都将被缓存（客户端和代理服务器都缓存）</p>
 <p><strong>private</strong>:值在客户端缓存</p>
 <p><strong>no-catch</strong>:客户端缓存内容，是否使用缓存则需要经过协商缓存来决定。</p>
@@ -514,6 +514,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">腾讯地图API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NodeJS eggJs</a>
               </li>
              
               <li class="article-tag-list-item">

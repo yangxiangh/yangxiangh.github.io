@@ -7,22 +7,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>github+hexo | xh小站长</title>
+  <title>谈谈你对作用域/作用域链，闭包，原型的理解 | xh小站长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录搭建git博客的过程  准备工作 github账号,安装Node.js&#x2F;npm&#x2F;git">
+  <meta name="description" content="先来了解一下作用域的相关概念。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github+hexo">
-<meta property="og:url" content="http://example.com/2021/02/01/github-hexo/index.html">
+<meta property="og:title" content="谈谈你对作用域&#x2F;作用域链，闭包，原型的理解">
+<meta property="og:url" content="http://example.com/2021/03/05/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/index.html">
 <meta property="og:site_name" content="xh小站长">
-<meta property="og:description" content="记录搭建git博客的过程  准备工作 github账号,安装Node.js&#x2F;npm&#x2F;git">
+<meta property="og:description" content="先来了解一下作用域的相关概念。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2021/02/01/github-hexo/1.png">
-<meta property="article:published_time" content="2021-02-01T05:37:27.000Z">
-<meta property="article:modified_time" content="2021-02-01T07:17:31.885Z">
+<meta property="article:published_time" content="2021-03-05T03:17:00.000Z">
+<meta property="article:modified_time" content="2021-03-08T07:26:02.922Z">
 <meta property="article:author" content="Yangxh">
-<meta property="article:tag" content="博客搭建">
+<meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/02/01/github-hexo/1.png">
   
     <link rel="alternative" href="/atom.xml" title="xh小站长" type="application/atom+xml">
   
@@ -71,7 +69,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 43
+			总文章数 48
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -168,78 +166,74 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-github-hexo" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-作用域链" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      github+hexo
+      谈谈你对作用域/作用域链，闭包，原型的理解
     </h1>
   
 
         
-        <a href="/2021/02/01/github-hexo/" class="archive-article-date">
-  	<time datetime="2021-02-01T05:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
+        <a href="/2021/03/05/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" class="archive-article-date">
+  	<time datetime="2021-03-05T03:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>记录搭建git博客的过程</p>
-<ul>
-<li><p>准备工作</p>
-<p>github账号,安装Node.js/npm/git</p>
+        <p>先来了解一下作用域的相关概念。</p>
 <a id="more"></a>
-</li>
-<li><p>本文使用的环境</p>
-<p>Node.js v14.15.4</p>
-<p>npm v6.14.10</p>
-<p>git v2.30.0</p>
-<p> hexo v4.2.0</p>
-</li>
-<li><p>搭建github博客</p>
-<p>①创建仓库</p>
-<p><em>注意</em>:必须以github账号.github.io为名称创建仓库,.将来博客的访问地址就是`http://用户名.github.io</p>
-<p>②绑定域名(选填,需要注册域名,需要花钱)</p>
-<p>③配置SSH key(提高安全性,用用户名和密码提交也可以) </p>
-</li>
-<li><p>使用hexo写博客</p>
-<p>①hexo简介</p>
-<p>hexo是一个简单,快速,强大的基于gitbub pages的博客发布工具,支持markdowm格式,有众多优秀主题.官网地址<code>http://hexo.io</code></p>
-<p>②原理</p>
-<p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p>
-<p>③安装hexo</p>
-<p><code>npm i -g hexo</code></p>
-<p>④初始化</p>
-<p>新建文件夹hexo,进入文件夹,<code>hexo init</code>,hexo会自动下载相关文件,包括所需要的依赖node-modules.</p>
-<p><code>hexo g</code> 生成静态文件</p>
-<p><code>hexo s</code>  启动本地文件</p>
-<p>执行以上命令,hexo会在public文件夹生成相关的惠特米勒文件, 这些文件将来需要提交到github上.服务启动后,访问<code>local host:4000</code>就可以看到默认主题的博客页面</p>
-<img src="/2021/02/01/github-hexo/1.png" class>
 
-<p>⑤修改主题</p>
-<p>下载主题:<code>git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</code></p>
-<p>修改<em>_config.yml</em>中的theme属性为<code>theme: yilia</code>, 然后一次执行<code>hexo clean</code>,    <code>hexo g</code>,  <code>hexo s</code>重新生成页面.</p>
-<p>⑥上传代码:     <code>hexo d</code></p>
-<p>配置<em>_config.yml</em>中有关deploy的部分</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type: git </span><br><span class="line">repository: https:<span class="comment">//github.com/yangxiangh/yangxiangh.github.io.git </span></span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<p>⑦写博客</p>
-<p>执行<code>hexo new 文章名称</code>, hexo会在_posts文件夹下生成对应的md文件.可以使用<em>Typora</em>编辑器进行文章编写.   </p>
+<ul>
+<li><p><strong>什么是作用域</strong>：（scope）指程序源码中定义变量的区域。也就是，一段程序代码中所用到的变量并不总是有效的，而限定这个变量可用性的代码范围就是这个变量的作用域。</p>
+<p><strong>全局作用域</strong>：外围的一个作用域。根据 ECMAScript 实现所在的宿主环境不同，表示全局作用域的对象也不一样。在浏览器中，全局作用域就是window对象，node则是global对象。</p>
+<p>全局作用域的情形：1.window(global)下的属性和方法     2.最外层的变量或函数     3.未定义直接使用的变量</p>
+<p><strong>局部作用域</strong>：一般只在固定的代码片段内可访问到，最常见的是函数内部。</p>
+<p><strong>函数作用域</strong>：定义在函数中的变量就处于函数作用域中。不同函数作用域中，变量不能相互访问。</p>
+<p><strong>块级作用域</strong>：因此ES6 引入了块级作用域，让变量的生命周期更加可控，使用let和const声明的变量在指定块（简单理解就是一对花括号）的作用域外无法被访问。</p>
 </li>
-<li><p>踩过的坑</p>
-<p>①文章中引入本地图片</p>
-<p>1).修改<em>_config.yml</em>文件:<code>post_asset_folder: true</code>,修改该属性后,创建文章会自动的创建同名文件夹,将该文章所需要的图片放在该文件夹下.</p>
-<p>2).使用Typora编辑器的快捷键<code>ctrl+shift+i</code>引入图片不显示.需要安装插件<code>npm install https://github.com/7ym0n/hexo-asset-image --save</code>, 引用图片<code>&#123;% asset_img  1.png  %&#125;</code></p>
-<p>②点击文章出现小红心效果</p>
-<p>在<code>hexo/themes/yilia/source</code>目录下创建love.js文件, 文件内容如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!function(e,t,a)&#123;function r()&#123;for(var e&#x3D;0;e&lt;s.length;e++)s[e].alpha&lt;&#x3D;0?(t.body.removeChild(s[e].el),s.splice(e,1)):(s[e].y--,s[e].scale+&#x3D;.004,s[e].alpha-&#x3D;.013,s[e].el.style.cssText&#x3D;&quot;left:&quot;+s[e].x+&quot;px;top:&quot;+s[e].y+&quot;px;opacity:&quot;+s[e].alpha+&quot;;transform:scale(&quot;+s[e].scale+&quot;,&quot;+s[e].scale+&quot;) rotate(45deg);background:&quot;+s[e].color+&quot;;z-index:99999&quot;);requestAnimationFrame(r)&#125;function n()&#123;var t&#x3D;&quot;function&quot;&#x3D;&#x3D;typeof e.onclick&amp;&amp;e.onclick;e.onclick&#x3D;function(e)&#123;t&amp;&amp;t(),o(e)&#125;&#125;function o(e)&#123;var a&#x3D;t.createElement(&quot;div&quot;);a.className&#x3D;&quot;heart&quot;,s.push(&#123;el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:c()&#125;),t.body.appendChild(a)&#125;function i(e)&#123;var a&#x3D;t.createElement(&quot;style&quot;);a.type&#x3D;&quot;text&#x2F;css&quot;;try&#123;a.appendChild(t.createTextNode(e))&#125;catch(t)&#123;a.styleSheet.cssText&#x3D;e&#125;t.getElementsByTagName(&quot;head&quot;)[0].appendChild(a)&#125;function c()&#123;return&quot;rgb(&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;)&quot;&#125;var s&#x3D;[];e.requestAnimationFrame&#x3D;e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e)&#123;setTimeout(e,1e3&#x2F;60)&#125;,i(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#39;&#39;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;),n(),r()&#125;(window,document);</span><br></pre></td></tr></table></figure>
-<p>③在<code>hexo/themes/yilia/layout/_partial/footer.ejs</code>文件的最后添加下列代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--页面点击小红心--&gt;</span><br><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;/love.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<li><p><strong>预编译</strong>：它的存在本就是用于解决执行顺序问题。JS在运行中有三个步骤：语法分析 / 预编译 / 解释执行</p>
+<p>1.生成一个全局对象或者叫做<strong>全局执行上下文</strong>（我一直不习惯这么叫，觉得太拗口）所以下面就用GO（Global Object）来，GO只有一个，浏览器中的GO其实就是 window 对象 <strong>GO={}</strong></p>
+<p>2.将变量声明作为属性名挂载在GO上，值为undefined <strong>GO.a=undefined</strong></p>
+<p>3.找函数声明，并将函数名作为GO对象的属性名，值为函数体。<strong>GO.a=[Function: a]</strong></p>
+<p>如果执行过程中遇到函数，就会触发局部预编译，函数的局部预编译发生在函数执行前的一刻。 <strong>a(1)</strong></p>
+<p>1.生成一个活动对象或者叫做<strong>局部执行上下文</strong>，为了统一下面就用AO（Active Object）来表示，AO可以有无数个，每次调用函数都会创建一个新的AO. <strong>AO={}</strong></p>
+<p>2.找形参和变量声明,将变量和形参名作为AO的属性名,值同样为undefined. <strong>AO.a=undefined</strong></p>
+<p>3.将AO的形参的值改为实参值. <strong>AO.a=1</strong></p>
+<p>4.在该函数体里面找函数声明，值为函数体</p>
+</li>
+<li><p><strong>作用域链</strong></p>
+<p>先来看一下这个函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> z = <span class="number">1</span> <span class="comment">//</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tim</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">cope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="keyword">var</span> x= <span class="number">2</span>;</span><br><span class="line">       y=<span class="number">3</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> y = <span class="number">4</span></span><br><span class="line">   cope()</span><br><span class="line">   <span class="built_in">console</span>.log(y)  <span class="comment">// 3</span></span><br><span class="line">&#125;</span><br><span class="line">tim()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>自由变量：在当前作用域中没有定义的变量。自由变量值如何得到===&gt;向父级作用域寻找</li>
+<li>作用域链：如果父级作用域也没有，就会再向上一层寻找，直到全局作用域还没找到，就放弃。这种一层一层的关系，就是作用域链。</li>
+</ul>
+</li>
+<li><p><strong><em>作用域链</em>主要的作用是用于查找标识符</strong>，当作用域需要查询变量的时候会沿着作用域链依次查找，如果找到标识符就会停止搜索，否则将会沿着作用域链依次向后查找，直到作用域链的结尾。**<em>原型链</em>适用于查找引用类型的属性**查找属性会沿着原型链依次进行，如果找到该属性会停止搜索并做相应的操作，否则将会沿着原型链依次查找直到结尾。</p>
+</li>
+<li><p><strong>闭包</strong></p>
+<p><em>概念</em>：<strong>闭包就是能够读取其他函数内部变量的函数。</strong>再JS语言中，只有函数内部的子函数能读取局部变量，因此可以把闭包简单理解成<strong>定义在一个函数内部的函数</strong>。所以，本质上，闭包就是将函数内部和外部连接起来的一座桥梁。</p>
+<p><em>例子</em>：函数b是一个闭包函数，用于获取a函数内部的变量。当函数a的内部函数b，被函数a外的一个变量c引用的时候， 就创建了一个闭包。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	 ++i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> c = a();</span><br><span class="line">c();</span><br></pre></td></tr></table></figure>
+<p><em>作用</em>：1.可以读取函数内部的变量    2.让这些变量的值始终保持在内存中。</p>
+<p><strong>使用场景</strong>：</p>
+<p>（1）使用闭包实现函数防抖</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">callback, time</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> timer;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(timer) &#123;</span><br><span class="line">            <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">        &#125;</span><br><span class="line">        timer = setTimeOut(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			callback();</span><br><span class="line">        &#125;, time)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）原生的setTimeout传递的第一个函数不能带参数，通过闭包可以实现传参效果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> fn = f1(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">setTimeout</span>(fn,<span class="number">1000</span>);<span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+<p>（3）使用闭包遍历取索引值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</span><br><span class="line">	setTimeOut(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(i);<span class="comment">//10个10</span></span><br><span class="line">    &#125;,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//闭包改进</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, i&lt;<span class="number">10</span>; i++) &#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span> (<span class="params">j</span>)</span>&#123;</span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(j)&#125;,<span class="number">0</span>)<span class="comment">//1-9</span></span><br><span class="line">    &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+
+</li>
+<li><p><strong>原型</strong>：所有的函数都有一个特殊的属性prototype（原型）， prototype属性是一个指针，指向一个对象（原型对象），原型对象中的方法和属性都可以被函数的实例共享。所谓的函数实例指以函数作为构造函数创建的对象，这些对象实例都可以共享构造函数的原型的方法。</p>
 </li>
 </ul>
 
@@ -276,7 +270,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客搭建</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
 		</ul>
@@ -332,7 +326,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/02/01/github-hexo/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/05/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -346,18 +340,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/02/01/JSONP/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/03/08/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%9826-30/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          记录一个使用JSOP解决跨域坑
+          每日一题26-30
         
       </div>
     </a>
   
   
-    <a href="/2020/11/03/DOM%E4%BA%8B%E4%BB%B6%E6%B5%81/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">DOM事件流</div>
+    <a href="/2021/03/03/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%9821-25/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每日一题21-25</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -498,6 +492,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">腾讯地图API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NodeJS eggJs</a>
               </li>
              
               <li class="article-tag-list-item">

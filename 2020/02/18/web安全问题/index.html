@@ -17,7 +17,7 @@
 <meta property="og:description" content="1.Web安全分类 XSS（Cross Site Scripting,跨站脚本攻击），CSRF(Cross Site Request Forgery,跨站请求伪造)，点击劫持， URL跳转漏洞，SQL注入， OS命令注入。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-18T05:37:27.000Z">
-<meta property="article:modified_time" content="2021-02-22T09:49:27.133Z">
+<meta property="article:modified_time" content="2021-03-05T02:55:41.680Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="web安全">
 <meta name="twitter:card" content="summary">
@@ -69,7 +69,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 43
+			总文章数 48
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -208,7 +208,7 @@
 <p>①Web页面渲染的所有内容或者显然的数据都必须来自服务端</p>
 <p>②尽量不要从<code>URL</code>,<code>document.referrer</code>,<code>document.forms</code>,等这种DOM API中获取数据直接渲染</p>
 <p>③尽量不要使用<code>eval</code>, <code>new Function</code>,<code>document.write()</code>,<code>window.setTimeOut</code>,<code>innerHTML</code>等可执行字符串的方法</p>
-<p>③如果做不到以上几点,也必须对涉及DOM渲染的方法传入的字符串参数惊醒escape转义</p>
+<p>③如果做不到以上几点,也必须对涉及DOM渲染的方法传入的字符串参数进行escape转义</p>
 <p>④前端渲染的时候对任何字段都需要做escape转义</p>
 </li>
 <li><p>存储型的XSS(持久型)</p>
@@ -238,11 +238,11 @@
 </ul>
 <p>3.CSRF</p>
 <ul>
-<li><p>是什么:跨站请求伪造,他利用户的登录身份,子啊用户不知情的情况下,以用户的名义完成非法操作.</p>
+<li><p>是什么:跨站请求伪造,他利用户的登录身份,在用户不知情的情况下,以用户的名义完成非法操作.</p>
 </li>
 <li><p>CSRF攻击的必要条件:</p>
-<p>①用户登录长点A,并在本地存储cookie信息</p>
-<p>②在用户没有登出站带你A的情况下,访问恶意攻击者提供的危险站点B</p>
+<p>①用户登录站点A,并在本地存储cookie信息</p>
+<p>②在用户没有登出A的情况下,访问恶意攻击者提供的危险站点B</p>
 <p>③站点A没有做防御措施</p>
 </li>
 <li><p>例子:用户登录转账界面,弹出诱惑性信息,用户点击危险网站连接,当危险网站连接加载时执行某一个请求,从而将用户的10块钱转入黑客账户.</p>
@@ -549,6 +549,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">腾讯地图API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NodeJS eggJs</a>
               </li>
              
               <li class="article-tag-list-item">

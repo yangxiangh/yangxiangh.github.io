@@ -17,7 +17,7 @@
 <meta property="og:description" content="每天积累一个小问题…">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-03T09:50:33.000Z">
-<meta property="article:modified_time" content="2021-03-04T03:08:38.232Z">
+<meta property="article:modified_time" content="2021-03-08T04:48:37.301Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
@@ -69,7 +69,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 43
+			总文章数 48
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -207,6 +207,16 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   <span class="built_in">Promise</span>.resolve(<span class="number">1</span>)</span><br><span class="line">   .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="keyword">throw</span> (<span class="number">4</span>);</span><br><span class="line">     <span class="built_in">console</span>.log(res);</span><br><span class="line">     <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">   &#125;)</span><br><span class="line">   .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(err);</span><br><span class="line">     <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">   &#125;)</span><br><span class="line">   .then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(res);</span><br><span class="line">   &#125;);</span><br><span class="line"><span class="comment">// 4 3</span></span><br></pre></td></tr></table></figure>
 <p><em>解析：</em>throw相当于普通函数的return，后面的代码不会执行。throw出去的错误，会被catch捕获，catch之前的.then方法不会执行，但是catch后面的.then会正常执行。</p>
 <p><strong><em>23.vue中key的作用</em></strong></p>
+<p><strong>key的作用</strong>：key大多数情况下使用在循环语句中，从本质上说，有以下两点作用：</p>
+<p>​    1.主要用在VUE的虚拟DOM算法上，在新旧节点对比时辨别Vnode,相当于唯一标识ID</p>
+<p>​    2.Vue会尽可能高效的渲染元素，通常会复用已有的元素而不是从头开始渲染，因此key值可以提高渲染效率，同理改变某一元素的key值会使改元素中心渲染。</p>
+<p><strong>key的工作原理</strong></p>
+<p><strong><em>24.输出什么？为什么？</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> x, y;</span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">Error</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">catch</span>(x) &#123;</span><br><span class="line">    (x=<span class="number">1</span>), (y =<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(x);<span class="comment">//1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(x);<span class="comment">//undefined</span></span><br><span class="line">  <span class="built_in">console</span>.log(y);<span class="comment">//2</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p><em>解析</em>：catch代码块接收参数x,当我们接收参数时，这与之前定义的x不同。接收的参数属于catch块级作用域，catch之外 的函数作用域中的x仍未undefined。</p>
+<p><strong><em>25.输出什么为什么？</em></strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span> (<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    setTimeOut(resolve, <span class="number">100</span>,<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;)<span class="comment">//1 3 2</span></span><br></pre></td></tr></table></figure>
+<p><em>解析</em>：setTimeout函数接收的第三个参数（及以后）会作为第一个参数的参数。</p>
 
       
 
@@ -310,6 +320,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2021/03/05/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          谈谈你对作用域/作用域链，闭包，原型的理解
+        
+      </div>
+    </a>
   
   
     <a href="/2021/03/03/%E6%96%87%E5%AD%97%E7%8E%AF%E7%BB%95%E5%9B%BE%E7%89%87/" id="article-nav-older" class="article-nav-link-wrap">
@@ -454,6 +473,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">腾讯地图API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NodeJS eggJs</a>
               </li>
              
               <li class="article-tag-list-item">

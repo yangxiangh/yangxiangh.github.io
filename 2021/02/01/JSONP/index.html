@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/02/01/JSONP/1.png">
 <meta property="article:published_time" content="2021-02-01T05:37:27.000Z">
-<meta property="article:modified_time" content="2021-02-03T07:21:31.227Z">
+<meta property="article:modified_time" content="2021-03-05T02:01:18.537Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="JSONP 腾讯API">
 <meta name="twitter:card" content="summary">
@@ -71,7 +71,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 43
+			总文章数 48
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -203,13 +203,25 @@
 <ul>
 <li><p>解决完问题，来研究以下JSONP（JSON with Padding）的原理及实现</p>
 <p>参考地址：<a target="_blank" rel="noopener" href="https://blog.csdn.net/inite/article/details/80333130">https://blog.csdn.net/inite/article/details/80333130</a> </p>
-<p>1.什么是JSONP</p>
-<p>JSON是一种轻量级的数据传输格式，被广泛应用于当前web应用中。虽然JSONP虽然和JSON只相差一个字母，但是他们完全不是一回事。JSON是一种数据交换格式，而JSONP是一种<em>非官方跨域数据交换协议</em>。就如同，json是用来书写情报和交换的暗号，而jsonp是把用暗号书写的情报传递给自己同志时使用的街头方式。</p>
+<p>1.什么是JSONP（json with padding)</p>
+<p>JSON是一种轻量级的数据传输格式，被广泛应用于当前web应用中。虽然JSONP虽然和JSON只相差一个字母，但是他们完全不是一回事。JSON是一种数据交换格式，而JSONP是一种<em>非官方跨域数据交换协议</em>。就如同，json是用来书写情报和交换的暗号，而jsonp是把用暗号书写的情报传递给自己同志时使用的接头方式。</p>
+<p>简单说，JSON返回的是一串数据，而JSONP返回的是一段脚本代码。json是目的，jsonp是手段。</p>
 <p>2.JSONP的原理</p>
-<p>ajax请求受同源策略的影响，不允许进行跨站请求。而script标签的src属性中的连接却可以访问跨域的js脚本。利用这个特性，服务端不在返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行调用，这样实现了跨域。</p>
+<p>ajax请求受同源策略的影响，不允许进行跨站请求。<strong>而script标签的src属性中的连接却可以访问跨域的js脚本。利用这个特性，服务端不再返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行调用，这样实现了跨域</strong>。</p>
 <p>3.JSONP的具体实现</p>
 <p>Web端事先定义一个用于获取跨域响应数据的回调函数，并通过没有同源策略的script标签发起请求（将回调函数的名称放在请求参数中），然后服务器端返回这个回调函数的执行，并将需要的数据放到回调函数的参数里，前端的script标签请求到这个回调函数后会立即执行，于是就拿到了执行的响应数据。</p>
-<p>未完待续…</p>
+<p>接下来看一个简单的<em>例子</em>：</p>
+<p>网站A需要获取网站B的数据，那么就可所以使用JSONP的方式：</p>
+<p>​    （1）使用<script src="http:www.B.com/open.js"></script>标签先获取到open.js文件</p>
+<p>​    （2）A网站获取到数据后处理数据的方法名必须命名为fn,这里相当于B网站和A网站建立的一个协议，要求请求者即A网站必须按照规定办事。</p>
+<p> open.js的代码如下：<code>foo(&#123;name:&#39;B&#39;&#125;);</code></p>
+<p>那么网站A想要获取B网站中open.js的内容就必须有这样的脚本：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params">data</span>) </span>&#123;<span class="built_in">console</span>.log(data);&#125;</span><br></pre></td></tr></table></figure>
+
+<p>虽然拿到了，数据但是问题也随之而来。这时C网站也想要获取open.js的数据，但是foo这个方法名已经在C网站的脚本中使用，替换必然会产生问题，那么只能是B网站更改方法名称，但是这时A网站也不会同意。为了解决这样的情况，聪明的开发者使用了动态生成JS文件的方法。php实现版本如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(<span class="string">&#x27;Content-type: application/javascript&#x27;</span>);</span><br><span class="line">$jsonCallback = htmlspecialchars($_REQUEST [<span class="string">&#x27;callback&#x27;</span>]);    <span class="comment">//获取请求者自定义的回调函数名</span></span><br><span class="line">$jsonData =<span class="string">&#x27;&#123;&quot;name&quot;:&quot;B&quot;,&quot;age&quot;:23&#125;&#x27;</span>;    <span class="comment">//待返回的json数据</span></span><br><span class="line">echo $jsonCallback . <span class="string">&quot;(&quot;</span> . $jsonData . <span class="string">&quot;)&quot;</span>;    <span class="comment">//输出jsonp格式的数据，即一行函数调用语句</span></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>那么A网站只需要用<code>&lt;script src=&quot;http://www.B.com/open.php?callback=foo&quot;&gt;&lt;/script&gt;</code>请求数据，B网站使用<code>&lt;script src=&quot;http://www.B.com/open.php?callback=foo1&quot;&gt;&lt;/script&gt;</code>请求数据。实现了各个网站之间不会相互影响。</p>
 <p>4.JSONP的安全性问题</p>
 <ul>
 <li>CSRF攻击</li>
@@ -331,8 +343,8 @@
     </a>
   
   
-    <a href="/2021/02/01/github-hexo/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">github+hexo</div>
+    <a href="/2021/01/04/egg%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">egg学习之路</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -473,6 +485,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">腾讯地图API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NodeJS eggJs</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2020/07/03/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/1.png">
 <meta property="article:published_time" content="2020-07-03T10:01:51.000Z">
-<meta property="article:modified_time" content="2021-02-22T09:50:36.930Z">
+<meta property="article:modified_time" content="2021-03-05T03:14:18.591Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="前端优化">
 <meta name="twitter:card" content="summary">
@@ -71,7 +71,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 43
+			总文章数 48
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -241,7 +241,7 @@
 </li>
 <li><p>按需加载第三方资源，比如使用echarts时</p>
 </li>
-<li><p>使用nginx开始gzip减少网络传输流量大小， webpack开启gzip压缩</p>
+<li><p>使用nginx开启gzip减少网络传输流量大小， webpack开启gzip压缩</p>
 <p>首先需要下载插件<code>npm i -D compression-webpack-plugin</code></p>
 <p>再vue.config.js中配置</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入插</span></span><br><span class="line"><span class="keyword">const</span> CompressionWebpackPlugin = <span class="built_in">require</span>(<span class="string">&quot;compression-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="comment">//匹配此 &#123;RegExp&#125; 的资源</span></span><br><span class="line"><span class="keyword">const</span> productionGzipExtensions = <span class="regexp">/\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    configureWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> plugins = []</span><br><span class="line">        <span class="comment">// start 生成 gzip 压缩文件</span></span><br><span class="line">        plugins.push(</span><br><span class="line">            <span class="keyword">new</span> CompressionWebpackPlugin(&#123;</span><br><span class="line">                filename: <span class="string">&quot;[path].gz[query]&quot;</span>, <span class="comment">//目标资源名称，缩后的文件名(保持原文件名，后缀加.gz)</span></span><br><span class="line">                algorithm: <span class="string">&quot;gzip&quot;</span>, <span class="comment">//使用gzip压缩</span></span><br><span class="line">                test: productionGzipExtensions, <span class="comment">//处理所有匹配此 &#123;RegExp&#125; 的资源</span></span><br><span class="line">                threshold: <span class="number">10240</span>,<span class="comment">//只处理比这个值大的资源。对超过10k的数据压缩</span></span><br><span class="line">                minRatio: <span class="number">0.8</span> <span class="comment">//只有压缩率比这个值小的资源才会被处理</span></span><br><span class="line">            &#125;)</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">// End 生成 gzip 压缩文件</span></span><br><span class="line">        config.plugins = [...config.plugins, ...plugins];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -503,6 +503,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">腾讯地图API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NodeJS eggJs</a>
               </li>
              
               <li class="article-tag-list-item">
