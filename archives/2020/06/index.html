@@ -7,19 +7,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>每日一题26-30 | xh小站长</title>
+  <title>Archives: 2020/6 | xh小站长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="每天积累一个小问题…">
-<meta property="og:type" content="article">
-<meta property="og:title" content="每日一题26-30">
-<meta property="og:url" content="http://example.com/2021/03/08/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%9826-30/index.html">
+  <meta name="description" content="个人技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xh小站长">
+<meta property="og:url" content="http://example.com/archives/2020/06/index.html">
 <meta property="og:site_name" content="xh小站长">
-<meta property="og:description" content="每天积累一个小问题…">
+<meta property="og:description" content="个人技术博客">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-03-08T04:49:16.000Z">
-<meta property="article:modified_time" content="2021-03-08T05:10:29.773Z">
 <meta property="article:author" content="Yangxh">
-<meta property="article:tag" content="JS">
+<meta property="article:tag" content="技术记录">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="xh小站长" type="application/atom+xml">
@@ -69,7 +67,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 48
+			总文章数 50
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -166,75 +164,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-每日一题26-30" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      每日一题26-30
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/06/09/%E5%87%BD%E6%95%B0-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" class="archive-article-date">
+  	<time datetime="2020-06-09T01:56:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/06/09/%E5%87%BD%E6%95%B0-%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/">函数提升和变量提升</a>
     </h1>
   
 
-        
-        <a href="/2021/03/08/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%9826-30/" class="archive-article-date">
-  	<time datetime="2021-03-08T04:49:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每天积累一个小问题…</p>
-<a id="more"></a>
-
-<p><strong><em>26.输出什么？</em></strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> [layer, ...d] = args;</span><br><span class="line">    <span class="keyword">return</span> d.length ? <span class="built_in">Array</span>(layer).fill(<span class="number">0</span>).map(<span class="function"><span class="params">_</span> =&gt;</span> fn(...d)) : <span class="built_in">Array</span>(layer);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fn(<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
-
-
-<p><em>解析</em>：该题主要涉及三个知识点</p>
-<ul>
-<li><p><strong>Array（）</strong></p>
-<p>Array（）接收的参数为number n，则会常见一个长度为n的空数组，若接收的参数为一个数组，则会创建一个长度为1，0号位为传入的数组。</p>
-</li>
-<li><p><strong>fill()</strong>  – ES6</p>
-<p>fill()方法用于将一个固定值替换数组的元素。语法<code>array.fill(value,start, end)</code>,替换是从start位置开始，到end-1的位置结束。</p>
-<p>示例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line">arr1.fill(<span class="number">0</span>);<span class="comment">//[0,0,0,0,0,0]</span></span><br><span class="line">arr1.fill(<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>);<span class="comment">//[1,2,0,0,5,6]</span></span><br></pre></td></tr></table></figure></li>
-<li><p><strong>高阶函数map()</strong></p>
-<p>map()方法返回一个由原数组的灭一个元素调用一个指定方法后返回的值组成的数组。</p>
-</li>
-</ul>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -246,115 +205,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/08/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%9826-30/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2021/03/08/%E6%9F%A5%E8%AF%A2%E5%AD%90%E8%8A%82%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          给一个二叉树，实现函数判断其叶节点数值从左到右是否为等差数列。
-        
-      </div>
-    </a>
   
   
-    <a href="/2021/03/05/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">谈谈你对作用域/作用域链，闭包，原型的理解</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -379,8 +242,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -482,6 +345,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vue.js</a>
               </li>
              
               <li class="article-tag-list-item">
