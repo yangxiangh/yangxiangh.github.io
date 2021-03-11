@@ -9,18 +9,20 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>nextTick | xh小站长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Vue中this.$nextTick()用于响应式的DOM变化。">
+  <meta name="description" content="Vue中this.$nextTick()用于DOM的异步更新。Vue.nextTick用于延迟执行一段代码，它接受2个参数（回调函数和执行回调函数的上下文环境），如果没有提供回调函数，那么将返回promise对象。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nextTick">
 <meta property="og:url" content="http://example.com/2021/03/08/nextTick/index.html">
 <meta property="og:site_name" content="xh小站长">
-<meta property="og:description" content="Vue中this.$nextTick()用于响应式的DOM变化。">
+<meta property="og:description" content="Vue中this.$nextTick()用于DOM的异步更新。Vue.nextTick用于延迟执行一段代码，它接受2个参数（回调函数和执行回调函数的上下文环境），如果没有提供回调函数，那么将返回promise对象。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/03/08/nextTick/1.png">
 <meta property="article:published_time" content="2021-03-08T10:13:11.000Z">
-<meta property="article:modified_time" content="2021-03-09T10:16:42.486Z">
+<meta property="article:modified_time" content="2021-03-11T10:10:52.719Z">
 <meta property="article:author" content="Yangxh">
 <meta property="article:tag" content="Vue.js">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/03/08/nextTick/1.png">
   
     <link rel="alternative" href="/atom.xml" title="xh小站长" type="application/atom+xml">
   
@@ -69,7 +71,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 50
+			总文章数 53
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -186,18 +188,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Vue中this.$nextTick()用于响应式的DOM变化。</p>
+        <p>Vue中this.$nextTick()用于DOM的异步更新。<code>Vue.nextTick</code>用于延迟执行一段代码，它接受2个参数（回调函数和执行回调函数的上下文环境），如果没有提供回调函数，那么将返回<code>promise</code>对象。</p>
 <a id="more"></a>
 
 <ul>
-<li><p><strong>data中的数据改变是如何追踪的？</strong></p>
-<p>vue将遍历data对象中所有的属性，并通过 Object.defineProperty 把这些属性全部转为 getter/setter；但是我们是没有办法看到 getter/setter的，但是在内部它们让 Vue 能够追踪依赖，在属性被访问和修改时通知变更。</p>
-<p>每个组件都对应一个 watcher 实例，它会在组件渲染的过程中把“接触”过的数据属性记录为依赖。之后当依赖项的 setter 触发时，会通知 watcher，从而使它关联的组件重新渲染。</p>
+<li><p>先来通过一个例子，了解以下nextTick的作用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;xx&quot;&gt;</span><br><span class="line">    &lt;div ref&#x3D;&quot;msgbox&quot;&gt;&#123;&#123;msg&#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div v-if&#x3D;&quot;msg1&quot;&gt;Message got outside $nextTick: &#123;&#123;msg1&#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div v-if&#x3D;&quot;msg2&quot;&gt;Message got inside $nextTick: &#123;&#123;msg2&#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">   &lt;button @click&#x3D;&quot;clickme()&quot;&gt;change msg&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      msg:&#39;hello&#39;,</span><br><span class="line">      msg1:&#39;&#39;,</span><br><span class="line">      msg2:&#39;&#39;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    clickme() &#123;</span><br><span class="line">      this.msg &#x3D; &#39;hihi&#39;;</span><br><span class="line">      this.msg1 &#x3D; this.$refs.msgbox.innerHTML;</span><br><span class="line">      this.$nextTick(() &#x3D;&gt; &#123;</span><br><span class="line">        this.msg2 &#x3D; this.$refs.msgbox.innerHTML</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击按钮可以看到这样的效果：</p>
+<img src="/2021/03/08/nextTick/1.png" class>
+
+<p>那么为什么出现这样的结果呢？<strong>原因就在于vue中的DOM更新是异步的</strong></p>
 </li>
-<li><p><strong>异步更新队列</strong></p>
-<p><strong>Vue中DOM更新是异步的</strong>。</p>
+<li><p>再来了解一些nextTick的主要应用场景和原因</p>
+<p>1.在vue的声明周期created()钩子函数中进行DOM操作一定要放在nextTick的回调函数中。</p>
+<p><strong>原因</strong>：在created()钩子函数执行的时候DOM其实未进行任何渲染，而此时进行DOM操作肯定是拿不到DOM节点的。</p>
+<p>2.在数据变化后要执行某个操作，而这个操作需要使用随数据改变而改变的DOM结构的时候。这个操作应该放仅nextTick的回调函数中。</p>
+<p><strong>原因</strong>：Vue官网中给了详细的解释</p>
+<blockquote>
+<p>Vue 异步执行 DOM 更新。只要观察到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据改变。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作上非常重要。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部尝试对异步队列使用原生的 <code>Promise.then</code> 和<code>MessageChannel</code>，如果执行环境不支持，会采用 <code>setTimeout(fn, 0)</code>代替。</p>
+</blockquote>
 </li>
 </ul>
+<blockquote>
+<p>例如，当你设置<code>vm.someData = &#39;new value&#39;</code>，该组件不会立即重新渲染。当刷新队列时，组件会在事件循环队列清空时的下一个“tick”更新。多数情况我们不需要关心这个过程，但是如果你想在 DOM 状态更新后做点什么，这就可能会有些棘手。虽然 Vue.js 通常鼓励开发人员沿着“数据驱动”的方式思考，避免直接接触 DOM，但是有时我们确实要这么做。为了在数据变化之后等待 Vue 完成更新 DOM ，可以在数据变化之后立即使用<code>Vue.nextTick(callback)</code> 。这样回调函数在 DOM 更新完成后就会调用。</p>
+</blockquote>
 
       
 
@@ -301,6 +315,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2021/03/10/%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B%E9%AB%98%E9%A2%91%E7%9A%84vue%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          总结一下高频的vue面试问题
+        
+      </div>
+    </a>
   
   
     <a href="/2021/03/08/leetcode%E5%88%B7%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
@@ -477,6 +500,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VueJs vnode diff</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
